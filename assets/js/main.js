@@ -1,29 +1,22 @@
-document.addEventListener('DOMContentLoaded',function(){
- var all=Array.prototype.slice.call(document.querySelectorAll('.ggrid figure'));
- var shown=all;
- all.forEach(function(f,i){f.addEventListener('click',function(){openLb(all.indexOf(f))})});
- function openLb(i){
-  var f=shown[i];if(!f)return;window._i=i;
-  document.getElementById('lb-img').src=f.getAttribute('data-full');
-  document.getElementById('lb-cap').textContent=f.getAttribute('data-cap');
-  document.getElementById('lb').style.display='flex';
- }
- window.stepLb=function(d){if(!shown.length)return;openLb((window._i+d+shown.length)%shown.length)};
- document.querySelectorAll('.filters button').forEach(function(b){
-  b.addEventListener('click',function(){
-   document.querySelectorAll('.filters button').forEach(function(x){x.classList.remove('on')});
-   b.classList.add('on');var c=b.getAttribute('data-c');shown=[];
-   all.forEach(function(f){
-    var ok=(c==='all'||f.getAttribute('data-cat')===c);
-    f.style.display=ok?'':'none';
-    if(ok)shown.push(f);
-   });
-  });
+// hero slideshow
+(function(){
+ var slides=document.querySelectorAll('.slide');if(!slides.length)return;
+ var i=0,timer;
+ function show(n){slides[i].classList.remove('on');i=(n+slides.length)%slides.length;slides[i].classList.add('on')}
+ function next(){show(i+1)} 
+ timer=setInterval(next,6000);
+ document.querySelectorAll('.arrows button').forEach(function(b){
+  b.addEventListener('click',function(){clearInterval(timer);show(this.dataset.d==='1'?i+1:i-1);timer=setInterval(next,6000)});
  });
- var lb=document.getElementById('lb');
- if(lb)lb.addEventListener('click',function(e){if(e.target===lb||e.target.className==='x')lb.style.display='none'});
- document.addEventListener('keydown',function(e){
-  if(lb&&lb.style.display==='flex'){if(e.key==='Escape')lb.style.display='none';
-  if(e.key==='ArrowRight')stepLb(1);if(e.key==='ArrowLeft')stepLb(-1)}
+})();
+// booking mask -> WhatsApp
+(function(){
+ var b=document.getElementById('bookBtn');if(!b)return;
+ b.addEventListener('click',function(){
+  var ci=document.getElementById('ci').value||'flexible dates';
+  var co=document.getElementById('co').value||'flexible dates';
+  var g=document.getElementById('gs').value;
+  var msg="Hello Relie Motel! I'd like to book: Check-in "+ci+", Check-out "+co+", "+g+". Please confirm availability and best rate.";
+  window.open("https://wa.me/256778472498?text="+encodeURIComponent(msg),'_blank');
  });
-});
+})();

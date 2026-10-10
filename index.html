@@ -3,124 +3,134 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Relie Motel — Affordable Stay in Fort Portal, Uganda&#x27;s Tourism City</title>
-<meta name="description" content="Clean, secure, affordable rooms and restaurant in central Fort Portal. 15 min walk to Tooro Palace, 13 km to Kibale National Park chimp trekking. Book direct on WhatsApp.">
+<title>Relie Motel — Welcoming Motel in Fort Portal, Uganda&#x27;s Tourism City</title>
+<meta name="description" content="Relie Motel in central Fort Portal: clean affordable rooms, restaurant and bar, free breakfast and parking, near Kibale National Park. Book direct on WhatsApp.">
 <link rel="canonical" href="https://asiimwe3.github.io/relie-motel/">
-<meta property="og:title" content="Relie Motel — Affordable Stay in Fort Portal, Uganda&#x27;s Tourism City">
-<meta property="og:description" content="Clean, secure, affordable rooms and restaurant in central Fort Portal. 15 min walk to Tooro Palace, 13 km to Kibale National Park chimp trekking. Book direct on WhatsApp.">
-<meta property="og:image" content="https://asiimwe3.github.io/relie-motel/assets/images/video-poster.webp">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Hotel", "name": "Relie Motel", "description": "Affordable motel in central Fort Portal with restaurant and bar, near Kibale National Park.", "address": {"@type": "PostalAddress", "streetAddress": "Malibo Road", "addressLocality": "Fort Portal", "addressCountry": "UG"}, "geo": {"@type": "GeoCoordinates", "latitude": 0.6518277, "longitude": 30.2714893}, "telephone": ["+256778472498", "+256775193137"], "numberOfRooms": 26, "priceRange": "$24 - $63", "amenityFeature": ["Free Wi-Fi", "Free parking", "Restaurant", "Bar", "Free breakfast"], "petsAllowed": "False", "url": "https://asiimwe3.github.io/relie-motel/", "image": "https://asiimwe3.github.io/relie-motel/assets/images/video-poster.webp"}</script>
 </head>
 <body>
-<header class="site">
- <a class="logo" href="index.html">RELIE <b>MOTEL</b></a>
- <nav class="main">
-  <a href="index.html">Home</a><a href="rooms.html">Rooms</a><a href="dining.html">Dining</a><a href="gallery.html">Gallery</a><a href="explore.html">Explore</a><a href="contact.html">Contact</a>
- </nav>
-</header>
-<div class="bookbar">
- <a href="https://wa.me/256778472498">WhatsApp Book Now</a>
- <a class="call" href="tel:+256778472498">Call +256 778 472498</a>
+<div class="top">
+ <div class="topbar">
+  <a class="logo" href="index.html">RELIE <b>MOTEL</b></a>
+  <nav class="main">
+   <a href="stay.html">Stay</a><a href="grounds.html">The Grounds</a><a href="dine.html">Dine</a><a href="groups.html">Groups</a><a href="explore.html">Explore</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact + FAQ</a>
+  </nav>
+ </div>
+ <div class="mask">
+  <div><label>CHECK IN</label><input type="date" id="ci"></div>
+  <div><label>CHECK OUT</label><input type="date" id="co"></div>
+  <div><label>GUESTS</label>
+   <select id="gs"><option>1 Guest</option><option selected>2 Guests</option><option>3 Guests</option><option>4+ Guests</option><option>Group / Event</option></select></div>
+  <button id="bookBtn">BOOK NOW</button>
+ </div>
 </div>
 <section class="hero">
- <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.45)" poster="assets/images/video-poster.webp"><source src="assets/video/relie-motel-promo.mp4" type="video/mp4"></video>
- <div class="inner">
-  <h1>Relie Motel</h1>
-  <p>Your base for exploring Uganda's Tourism City — clean, secure, central &amp; affordable</p>
-  <a class="btn" href="https://wa.me/256778472498">Book Now on WhatsApp</a>
-  <a class="btn ghost" href="rooms.html">Rooms &amp; Rates</a>
+ <div class="slide on"><img src="assets/images/demo-hero-exterior.webp" alt="Relie Motel exterior at golden hour">
+  <div class="cap"><div class="tag">Welcome to Fort Portal</div><h2>Your Path to Tourism City Comfort</h2></div></div>
+ <div class="slide"><img src="assets/images/demo-room-double.webp" alt="Relie Motel guest room">
+  <div class="cap"><div class="tag">Family-Friendly Accommodations</div><h2>26 Rooms, Simple &amp; Spotless</h2></div></div>
+ <div class="slide"><img src="assets/images/demo-dine-restaurant.webp" alt="Relie Motel restaurant">
+  <div class="cap"><div class="tag">Dine With Us</div><h2>Fresh Local &amp; International Cuisine</h2></div></div>
+ <div class="arrows"><button data-d="0">&#8249;</button><button data-d="1">&#8250;</button></div>
+</section>
+
+<section class="sec alt">
+ <div class="wrap">
+  <div class="tag">Welcome to Fort Portal</div>
+  <h2>Discover Relie Motel</h2>
+  <p class="lead">Nestled in the heart of Uganda's Tourism City, our charming motel invites you to experience the perfect blend of hillside tranquility and village charm. With 26 rooms, a warm restaurant and bar, and access to the crater lakes, Kibale National Park and the Tooro Kingdom Palace, our oasis offers a unique retreat after a fun-filled day of exploration.</p>
+  <p class="lead">Immerse yourself in the cool mountain air, enjoy our chef's fresh local dishes, and explore downtown Fort Portal, making every moment a delightful escape.</p>
  </div>
 </section>
 
-<section class="videosec">
+<section class="sec">
  <div class="wrap">
-  <h2>Welcome to Relie Motel</h2>
-  <p>Take a 90-second tour of our rooms, restaurant and bar</p>
-  <video controls preload="metadata" poster="assets/images/video-poster.webp">
-   <source src="assets/video/relie-motel-promo.mp4" type="video/mp4">
-   Your browser does not support the video tag.
-  </video>
- </div>
-</section>
-
-<section class="pad">
- <div class="wrap">
-  <h2 class="sec">Why guests choose Relie Motel</h2>
-  <p class="sub">Google reviews praise our staff, security and central location</p>
-  <div class="grid3">
-   <div class="card"><div class="body"><h3>Central &amp; quiet</h3><p style="font-size:.92rem">In the heart of Fort Portal on Malibo Road, minutes from the Tooro Kingdom Palace — yet quiet and secure.</p></div></div>
-   <div class="card"><div class="body"><h3>Kind staff, 24/7 desk</h3><p style="font-size:.92rem">Guests mention our customer care again and again. Front desk and security around the clock.</p></div></div>
-   <div class="card"><div class="body"><h3>Affordable comfort</h3><p style="font-size:.92rem">Spacious, clean rooms from USD 24 with free breakfast, Wi-Fi and private parking.</p></div></div>
+  <div class="tag">Family-Friendly Accommodations</div>
+  <h2>Find Your Perfect Stay</h2>
+  <p class="lead">Explore our range of accommodations, from cozy standard rooms to spacious deluxe doubles, tailored to suit every traveller's preference.</p>
+  <div class="cards">
+   <div class="card"><img src="assets/images/demo-room-double.webp" alt="Standard Double Room"><div class="b"><h3>Standard Double Room</h3><p style="font-size:.9rem;color:#666">1 double bed · private bathroom · Wi-Fi · TV</p><p class="rate">Rates from USD 24</p><div class="links"><a href="rooms/double.html">See room details</a><a href="https://wa.me/256778472498?text=Hello%20Relie%20Motel!%20I%27d%20like%20to%20book%20the%20Standard%20Double%20Room.">Book now</a></div></div></div>
+   <div class="card"><img src="assets/images/demo-room-twin.webp" alt="Standard Twin Room"><div class="b"><h3>Standard Twin Room</h3><p style="font-size:.9rem;color:#666">2 single beds · writing desk · sitting area</p><p class="rate">Rates from USD 29</p><div class="links"><a href="rooms/twin.html">See room details</a><a href="https://wa.me/256778472498?text=Hello%20Relie%20Motel!%20I%27d%20like%20to%20book%20the%20Standard%20Twin%20Room.">Book now</a></div></div></div>
+   <div class="card"><img src="assets/images/demo-room-deluxe.webp" alt="Deluxe Double Room"><div class="b"><h3>Deluxe Double Room</h3><p style="font-size:.9rem;color:#666">Upscale double · sitting area · garden-facing</p><p class="rate">Rates from USD 35</p><div class="links"><a href="rooms/deluxe.html">See room details</a><a href="https://wa.me/256778472498?text=Hello%20Relie%20Motel!%20I%27d%20like%20to%20book%20the%20Deluxe%20Double%20Room.">Book now</a></div></div></div>
   </div>
+  <a class="btn em" href="stay.html">See All Accommodations</a>
  </div>
 </section>
 
-<section class="pad" style="padding-top:0">
+<section class="split">
+ <div class="txt">
+  <div class="tag">A Stone's Throw</div>
+  <h2>Central Fort Portal, At Your Doorstep</h2>
+  <p>Situated a short walk from the Tooro Kingdom Palace and minutes from the crater lakes, our motel offers unparalleled convenience to the best of Uganda's Tourism City. Markets, restaurants and the golf course are all within easy reach.</p>
+  <p style="margin-top:18px"><a class="btn" href="explore.html">Explore</a></p>
+ </div>
+ <img src="assets/images/demo-explore-crater.webp" alt="Crater lakes near Fort Portal">
+</section>
+
+<section class="sec dark">
  <div class="wrap">
-  <h2 class="sec">Rooms &amp; Rates</h2>
-  <p class="sub">Simple, spotless and spacious — book direct for our best rate</p>
-  <div class="grid3"><div class="card"><div class="body"><h3>Double Room</h3><p style="font-size:.9rem;color:#666">1 double bed · private bathroom · Wi-Fi · TV</p><p class="price">from USD 24 / night</p></div></div><div class="card"><div class="body"><h3>Twin Room</h3><p style="font-size:.9rem;color:#666">2 single beds · writing desk · sitting area</p><p class="price">from USD 29 / night</p></div></div><div class="card" style="background:var(--dark);color:#eee;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px"><h3 style="color:var(--gold)">26 Rooms</h3><p style="font-size:.9rem;color:#bbb">17 Double · 7 Twin<br>24/7 front desk</p><a class="btn" style="margin-top:14px;padding:10px 22px;font-size:.85rem" href="rooms.html">See all rooms</a></div></div>
+  <div class="tag">Enjoy More, Spend Less</div>
+  <h2>Packages Crafted For Your Stay</h2>
+  <p class="lead">We believe in curating exceptional experiences that go beyond the ordinary. Our packages are designed to elevate your stay and create lasting memories — from best-rate guarantees to Kibale chimp trekking bundles.</p>
+  <a class="btn" href="packages.html">Learn More</a>
  </div>
 </section>
 
-<section class="dark pad">
+<section class="sec">
  <div class="wrap">
-  <h2 class="sec">Included with every stay</h2>
-  <p class="sub">Everything a traveller needs, nothing you don't</p>
-  <div class="grid3">
-   <div><ul class="tick"><li>Free breakfast 07:00–10:30</li><li>Free Wi-Fi</li><li>Flat-screen TV &amp; cable</li></ul></div>
-   <div><ul class="tick"><li>Private bathroom, warm water</li><li>Daily housekeeping</li><li>Free on-site parking</li></ul></div>
-   <div><ul class="tick"><li>Restaurant &amp; bar on site</li><li>Laundry &amp; luggage storage</li><li>Airport shuttle available</li></ul></div>
+  <div class="tag">Experience Fort Portal</div>
+  <h2>Uganda's Tourism City At Your Doorstep</h2>
+  <p class="lead">Discover Fort Portal's vibrant town life with markets and craft shops, savor crater-lake views at sunset, and trek chimpanzees in Kibale National Park during your stay with us.</p>
+  <div class="cards">
+   <div class="card"><img src="assets/images/demo-hero-exterior.webp" alt="Fort Portal town"><div class="b"><h3>Kibale National Park</h3><p style="font-size:.9rem">East Africa's top chimpanzee trekking destination, 13 km away.</p></div></div>
+   <div class="card"><img src="assets/images/demo-explore-crater.webp" alt="Crater lakes"><div class="b"><h3>Crater Lakes</h3><p style="font-size:.9rem">The "Switzerland of Uganda" — scenic drives and hikes minutes away.</p></div></div>
+   <div class="card"><img src="assets/images/demo-dine-bar.webp" alt="Evening in town"><div class="b"><h3>Tooro Culture</h3><p style="font-size:.9rem">Kingdom Palace, Lugard Monument and vibrant markets — a 15-minute walk.</p></div></div>
   </div>
+  <a class="btn em" href="explore.html">Explore</a>
  </div>
 </section>
 
-<section class="pad">
+<section class="sec dark">
  <div class="wrap">
-  <h2 class="sec">Explore Fort Portal from our door</h2>
-  <p class="sub">Uganda's official Tourism City — crater lakes, chimps and Tooro culture</p>
-  <div class="grid3">
-   <div class="card"><div class="body"><h3>Kibale National Park</h3><p style="font-size:.9rem">13 km — East Africa's top chimpanzee trekking destination.</p></div></div>
-   <div class="card"><div class="body"><h3>Tooro Kingdom Palace</h3><p style="font-size:.9rem">15-minute walk — home of the world's youngest monarch.</p></div></div>
-   <div class="card"><div class="body"><h3>Crater lakes &amp; Amabere Caves</h3><p style="font-size:.9rem">Scenic drives, hikes and hot springs minutes away.</p></div></div>
-  </div>
-  <p style="text-align:center;margin-top:24px"><a href="explore.html">See the full Fort Portal guide</a></p>
- </div>
-</section>
-
-<section class="dark pad" style="text-align:center">
- <div class="wrap">
-  <h2 class="sec">Book direct — best rate, instant confirmation</h2>
-  <p class="sub">Message us on WhatsApp and we'll reply within minutes</p>
-  <a class="btn" href="https://wa.me/256778472498">WhatsApp +256 778 472498</a>
+  <div class="tag">Seaside Serenity Awaits</div>
+  <h2>Ready for Your Fort Portal Escape?</h2>
+  <p class="lead">Book direct for our best rate and instant WhatsApp confirmation.</p>
+  <a class="btn" href="https://wa.me/256778472498">Book Now</a>
  </div>
 </section>
 <footer>
- <div class="wrap fgrid">
-  <div>
-   <h3>Relie Motel</h3>
-   Malibo Road, Bazaar<br>Fort Portal City, Uganda<br>
-   Plus code M72C+PHQ<br>
-   <a href="https://maps.google.com/?q=0.6518277,30.2714893">View on Google Maps</a>
+ <div class="wrap">
+  <div class="fgrid">
+   <div>
+    <h3>Relie Motel</h3>
+    Malibo Road, Bazaar<br>Fort Portal City, Uganda<br>
+    Plus code M72C+PHQ<br>
+    <a href="https://maps.google.com/?q=0.6518277,30.2714893">View on Google Maps</a>
+   </div>
+   <div>
+    <h3>Reservations</h3>
+    <a href="tel:+256778472498">+256778472498</a><br>
+    <a href="tel:+256775193137">+256 775 193137</a><br>
+    <a href="https://wa.me/256778472498">WhatsApp us</a><br>
+    Front desk 24/7
+   </div>
+   <div>
+    <h3>Explore</h3>
+    <a href="stay.html">Accommodations</a><br>
+    <a href="packages.html">Packages &amp; Offers</a><br>
+    <a href="explore.html">Fort Portal Guide</a><br>
+    <a href="contact.html">Policies &amp; FAQ</a>
+   </div>
   </div>
-  <div>
-   <h3>Reservations</h3>
-   <a href="tel:+256778472498">+256 778 472498</a><br>
-   <a href="tel:+256775193137">+256 775 193137</a><br>
-   <a href="https://wa.me/256778472498">WhatsApp us</a><br>
-   Front desk 24/7
+  <div style="text-align:center;margin-top:40px">
+   <h3>Stay Connected</h3>
+   <p style="font-size:.75rem">Sign up for seasonal offers and Fort Portal travel tips</p>
+   <div class="news"><input type="email" placeholder="Your email address"><button>Sign Up</button></div>
   </div>
-  <div>
-   <h3>Explore</h3>
-   <a href="rooms.html">Rooms &amp; Rates</a><br>
-   <a href="dining.html">Restaurant &amp; Bar</a><br>
-   <a href="gallery.html">Photo Gallery</a><br>
-   <a href="explore.html">Fort Portal Guide</a>
+  <div style="text-align:center;margin-top:30px;font-size:.72rem">
+   © 2026 Relie Motel · Website by DeryCode Technologies
   </div>
- </div>
- <div class="wrap" style="margin-top:26px;text-align:center;font-size:.75rem">
-  © 2026 Relie Motel · Website by DeryCode Technologies
  </div>
 </footer>
 <script src="assets/js/main.js"></script>
