@@ -8,6 +8,8 @@ a{color:var(--em)}
 .top{background:var(--dark)}
 .topbar{display:flex;justify-content:center;gap:8px;align-items:center;padding:10px;flex-wrap:wrap;background:rgba(13,21,18,.97);position:relative;z-index:50}
 .topbar a.logo{color:#fff;font-family:'Playfair Display',serif;font-size:1.15rem;text-decoration:none;letter-spacing:.12em}
+.topbar a.logo{display:inline-flex;align-items:center;gap:10px}
+.topbar a.logo img{width:34px;height:34px;border-radius:8px}
 .topbar a.logo b{color:var(--gold);font-weight:400}
 nav.main{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;padding:10px 0;background:rgba(13,21,18,.97);position:sticky;top:0;z-index:50}
 nav.main a{color:#eee;text-decoration:none;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
