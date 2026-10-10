@@ -1,9 +1,9 @@
-# Relief Motel — Research: Online Presence & Google Business Profile
+# Relie Motel — Research: Online Presence & Google Business Profile
 
 Gathered October 2026. Sources: Google Business Profile / Maps, Trip.com, Tripadvisor, Expedia, hotels.com, Agoda, Kayak, Priceline, MakeMyTrip, tiket.com, Hichee, Facebook, YouTube.
 
 ## Identity & location
-- Name: Relief Motel (listed on some OTAs as "Relief Motel Fort Portal")
+- Name: Relie Motel (listed on some OTAs as "Relie Motel Fort Portal")
 - Address: Malibo Road, Fort Portal, Western Region, Uganda (Plus code M72C+PHQ)
 - GPS: 0.6518277, 30.2714893
 - Phones: +256 778 472498 (Google Business Profile), +256 704 023485 (Trip.com listing)

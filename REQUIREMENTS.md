@@ -1,4 +1,4 @@
-# Relief Motel — Requirements & Technical Stack
+# Relie Motel — Requirements & Technical Stack
 
 Companion to `PLAN.md` (90-day sprint) and `RESEARCH.md`. Everything needed to build and run the platform.
 
@@ -89,7 +89,7 @@ No other languages needed. Single-stack discipline keeps the retainer cheap.
 
 ## 6. Accounts & signups needed (client + DeryCode checklist)
 
-1. Domain reliefmotel.com (registrar of choice, ~UGX 80–100k/yr)
+1. Domain reliemotel.com (registrar of choice, ~UGX 80–100k/yr)
 2. PesaPal business merchant account (owner's KYC documents required)
 3. Meta WhatsApp Business + Business Manager (owner's phone number verification)
 4. Africa's Talking account (Uganda sender ID approval)
