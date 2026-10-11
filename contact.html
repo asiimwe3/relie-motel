@@ -35,8 +35,10 @@
   </nav>
  </div>
  <div class="mask">
-  <div><label>CHECK IN</label><input type="date" id="ci"></div>
-  <div><label>CHECK OUT</label><input type="date" id="co"></div>
+  <div><label for="ci">CHECK IN</label>
+  <input type="date" id="ci" aria-label="Check-in date"></div>
+  <div><label for="co">CHECK OUT</label>
+  <input type="date" id="co" aria-label="Check-out date"></div>
   <div><label>GUESTS</label>
    <select id="gs" aria-label="Guests"><option>1 Guest</option><option selected>2 Guests</option><option>3 Guests</option><option>4+ Guests</option><option>Group / Event</option></select></div>
   <button id="bookBtn">BOOK NOW</button>
