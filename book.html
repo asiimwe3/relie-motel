@@ -144,7 +144,11 @@
   go.disabled=true;go.textContent='Reserving…';
   var msg='Booking request at Relie Motel\nName: '+name+'\nRoom: '+roomS.value+'\nCheck-in: '+inD.value+'\nCheck-out: '+outD.value+' ('+n+' night'+(n>1?'s':'')+')\nGuests: '+guests+'\nEstimated total: USD '+payload.total_usd+'\nPhone: '+phone+(notes?'\nNotes: '+notes:'');
   var wa='https://wa.me/256775193137?text='+encodeURIComponent(msg);
-  fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+  var saved=new Promise(function(res){
+    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+     .then(function(r){return r.json()}).then(res).catch(function(){res({ok:false})});
+    setTimeout(function(){res({ok:false})},2500);
+  });
    .then(function(r){return r.json()})
    .then(function(d){
      document.getElementById('bkform').style.display='none';
