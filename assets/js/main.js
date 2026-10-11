@@ -2,7 +2,9 @@
 (function(){
  var slides=document.querySelectorAll('.slide');if(!slides.length)return;requestAnimationFrame(function(){setTimeout(function(){var hv=document.querySelector('.hero');if(hv)hv.classList.add('sw')},0)});
  var i=0,timer;
- function show(n){slides[i].classList.remove('on');i=(n+slides.length)%slides.length;var im=slides[i].querySelector('img');if(im&&im.dataset.src){im.src=im.dataset.src;delete im.dataset.src}slides[i].classList.add('on')}
+ function warm(n){var im=slides[(n+slides.length)%slides.length].querySelector('img');if(im&&im.dataset.src){im.loading='eager';im.decoding='async';im.src=im.dataset.src;delete im.dataset.src}}
+ function show(n){slides[i].classList.remove('on');i=(n+slides.length)%slides.length;warm(i);warm(i+1);slides[i].classList.add('on')}
+ (window.requestIdleCallback||function(f){setTimeout(f,2500)})(function(){var k=0;(function step(){if(k>=slides.length)return;warm(k);k++;setTimeout(step,900)})()});
  function next(){show(i+1)} 
  timer=setInterval(next,6000);
  document.querySelectorAll('.arrows button').forEach(function(b){
