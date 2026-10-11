@@ -50,6 +50,7 @@
 .bkfine{text-align:center;font-size:.78rem;color:#888;margin:16px 0 0}
 @media(max-width:640px){.bkcard{padding:24px 18px;border-radius:14px}.bkgrp,.bkgrp.three{grid-template-columns:1fr;gap:16px}.bktotal b{font-size:1.6rem}.bkhead span{display:none}}
 </style>
+<script>try{var t=localStorage.getItem("relie_theme");if(!t&&matchMedia("(prefers-color-scheme: dark)").matches)t="dark";document.documentElement.setAttribute("data-theme",t||"light")}catch(e){}</script>
 </head>
 <body>
 <h1 class="sronly">Book a Room at Relie Motel Fort Portal — Direct Online Booking</h1>
@@ -168,7 +169,7 @@
  }
  function calc(){
   var n=nights(),p=+roomS.selectedOptions[0].getAttribute('data-price');
-  tot.textContent='USD '+(n>0?n*p:0);var nn=document.getElementById('bkNights');if(nn)nn.textContent=n>0?n+' night'+(n>1?'s':'')+' × USD '+p:'Select your dates';
+  var usd=n>0?n*p:0;tot.dataset.usd=usd;var M=window.RelieMoney,TT=window.RelieT||function(){return ''};tot.textContent=M?M.fmt(usd):'USD '+usd;var nn=document.getElementById('bkNights');if(nn)nn.textContent=n>0?n+' '+(n>1?(TT('nights')||'nights'):(TT('night')||'night'))+' × '+(M?M.fmt(p):'USD '+p):(TT('sel')||'Select your dates');
   document.getElementById('bkErr').style.display='none';
  }
  inD.addEventListener('change',function(){outD.min=inD.value;var n=nights();if(n<1){outD.value=inD.value;outD.dispatchEvent(new Event('change'))}calc()});
@@ -177,6 +178,7 @@
  var rm=/[?&]room=(standard-double|standard-twin|deluxe)/.exec(location.search);
  if(rm){roomS.selectedIndex={'standard-double':0,'standard-twin':1,'deluxe':2}[rm[1]]}
  calc();
+ document.addEventListener('relie:currency',calc);document.addEventListener('relie:lang',calc);
  go.addEventListener('click',function(){
   var err=document.getElementById('bkErr');
   var name=document.getElementById('bkName').value.trim(),
@@ -189,7 +191,7 @@
   var payload={guest_name:name,guest_phone:phone,room_type:roomS.value,check_in:inD.value,check_out:outD.value,
                guests:+guests,nights:n,total_usd:n*(+roomS.selectedOptions[0].getAttribute('data-price')),notes:notes};
   go.disabled=true;go.textContent='Reserving…';
-  var msg='Booking request at Relie Motel\nName: '+name+'\nRoom: '+roomS.value+'\nCheck-in: '+inD.value+'\nCheck-out: '+outD.value+' ('+n+' night'+(n>1?'s':'')+')\nGuests: '+guests+'\nEstimated total: USD '+payload.total_usd+'\nPhone: '+phone+(notes?'\nNotes: '+notes:'');
+  var msg='Booking request at Relie Motel\nName: '+name+'\nRoom: '+roomS.value+'\nCheck-in: '+inD.value+'\nCheck-out: '+outD.value+' ('+n+' night'+(n>1?'s':'')+')\nGuests: '+guests+'\nEstimated total: USD '+payload.total_usd+(window.RelieMoney&&window.RelieMoney.cur!=='USD'?' (~'+window.RelieMoney.fmt(payload.total_usd)+')':'')+'\nPhone: '+phone+(notes?'\nNotes: '+notes:'');
   var wa='https://wa.me/256775193137?text='+encodeURIComponent(msg);
   new Promise(function(res){
     fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
@@ -211,5 +213,6 @@
  });
 })();
 </script>
+<script src="assets/js/i18n.js" defer></script>
 </body>
 </html>
