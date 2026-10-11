@@ -22,6 +22,34 @@
 <meta name="geo.position" content="0.6518277;30.2714893">
 <meta name="ICBM" content="0.6518277, 30.2714893">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Hotel","@id":"https://relie-motel.vercel.app/#hotel","name":"Relie Motel","description":"Affordable, spotless motel in Fort Portal City, western Uganda. 26 rooms, restaurant & bar, conference hall, massage room, free secure parking and 24/7 front desk, 13 km from Kibale National Park.","url":"https://relie-motel.vercel.app/","telephone":"+256775193137","priceRange":"$24 - $50","currenciesAccepted":"UGX","paymentAccepted":"Cash, MTN MoMo, Airtel Money","address":{"@type":"PostalAddress","streetAddress":"Malibo Road, Bazaar","addressLocality":"Fort Portal","addressRegion":"Kabarole","addressCountry":"UG"},"geo":{"@type":"GeoCoordinates","latitude":0.6518277,"longitude":30.2714893},"checkinTime":"14:30","checkoutTime":"10:00","numberOfRooms":26,"potentialAction":{"@type":"ReserveAction","target":{"@type":"EntryPoint","urlTemplate":"https://relie-motel.vercel.app/book.html","actionPlatform":["http://schema.org/DesktopWebPlatform","http://schema.org/MobileWebPlatform"]},"result":{"@type":"LodgingReservation","name":"Room reservation at Relie Motel"}},"image":"https://relie-motel.vercel.app/assets/images/relie-aerial-night.webp"}</script>
+<style>
+.bkwrap{max-width:760px}
+.bkwrap .lead{margin-bottom:34px}
+.bkcard{background:#fff;border:1px solid #e6e0d2;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.09);padding:34px 36px;text-align:left;margin-top:8px}
+.bkhead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;border-bottom:1px solid #eee;padding-bottom:16px;margin-bottom:24px}
+.bkhead b{font-family:'Playfair Display',serif;font-size:1.35rem;color:#0b4f3f}
+.bkhead span{font-size:.78rem;color:#888;letter-spacing:.04em}
+.bkgrp{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.bkf{display:block;margin-bottom:0}
+.bkf>span{display:block;font-size:.78rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#444;margin-bottom:8px}
+.bkf>span i{font-weight:400;text-transform:none;letter-spacing:0;color:#999}
+.bkf input,.bkf select,.bkf textarea{display:block;width:100%;box-sizing:border-box;min-height:52px;padding:14px 16px;border:1.5px solid #d6d2c6;border-radius:10px;background:#fcfbf8;font:inherit;font-size:1rem;color:#222;transition:border .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
+.bkf select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1 1l6 6 6-6' fill='none' stroke='%23666' stroke-width='2'/></svg>");background-repeat:no-repeat;background-position:right 16px center;padding-right:42px}
+.bkf textarea{resize:vertical;min-height:90px;line-height:1.5}
+.bkf input:focus,.bkf select:focus,.bkf textarea:focus{outline:none;border-color:#0b4f3f;box-shadow:0 0 0 4px rgba(11,79,63,.12);background:#fff}
+.bktotal{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#0b4f3f,#0d1512);color:#fff;border-radius:12px;padding:20px 24px;margin:26px 0 14px}
+.bktotal small{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#d4af37}
+.bknights{font-size:.9rem;color:#dfe8e3;margin-top:2px}
+.bktotal b{font-size:1.9rem;color:#fff;font-family:'Playfair Display',serif}
+.bkperks{list-style:none;margin:0 0 22px;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px}
+.bkperks li{font-size:.82rem;color:#555}
+.bkperks li:before{content:"✓";color:#0b4f3f;font-weight:700;margin-right:7px}
+.bkbtn{display:block;width:100%;min-height:58px;border:0;border-radius:12px;background:#d4af37;color:#111;font:inherit;font-weight:700;font-size:1.02rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:transform .1s,background .15s}
+.bkbtn:hover{background:#c29f2c}.bkbtn:active{transform:scale(.99)}.bkbtn:disabled{opacity:.7;cursor:wait}
+.bkerr{color:#b3261e;background:#fdecea;border-radius:8px;padding:10px 14px;margin:14px 0 0;font-size:.9rem}
+.bkfine{text-align:center;font-size:.78rem;color:#888;margin:16px 0 0}
+@media(max-width:640px){.bkcard{padding:24px 18px;border-radius:14px}.bkgrp{grid-template-columns:1fr;gap:16px}.bktotal b{font-size:1.6rem}.bkhead span{display:none}}
+</style>
 </head>
 <body>
 <h1 class="sronly">Book a Room at Relie Motel Fort Portal — Direct Online Booking</h1>
@@ -36,28 +64,48 @@
 <section class="page-hero"><img src="assets/images/relie-aerial-entrance.webp" alt="Relie Motel entrance, aerial view" fetchpriority="high" decoding="async">
  <div class="cap"><div class="tag">Direct Booking</div><h1>Book Your Stay</h1></div></section>
 <section class="sec">
- <div class="wrap" style="max-width:640px">
+ <div class="wrap bkwrap">
   <div class="tag">Reserve in under a minute</div>
   <h2>Direct Online Booking</h2>
   <p class="lead">Book any of our 26 rooms direct with us — no booking fees. Pay at the hotel with cash, MTN MoMo or Airtel Money. Your reservation is confirmed instantly on WhatsApp.</p>
-  <div id="bkform" class="card" style="margin-top:26px"><div class="b">
-   <div class="bkrow"><label>Full name<input id="bkName" type="text" placeholder="Your name" required></label>
-   <label>Phone / WhatsApp<input id="bkPhone" type="tel" placeholder="+256 7XX XXX XXX" required></label></div>
-   <div class="bkrow"><label>Room type<select id="bkRoom">
-     <option value="Standard Double" data-price="24">Standard Double Room — USD 24/night</option>
-     <option value="Standard Twin" data-price="29">Standard Twin Room — USD 29/night</option>
-     <option value="Deluxe Double" data-price="35">Deluxe Double Room — USD 35/night</option>
-   </select></label>
-   <label>Guests<select id="bkGuests"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></label></div>
-   <div class="bkrow"><label>Check-in date<input id="bkIn" type="date" required></label>
-   <label>Check-out date<input id="bkOut" type="date" required></label></div>
-   <label>Special requests (optional)<input id="bkNotes" type="text" placeholder="Airport pick-up, late check-in, dietary needs…"></label>
-   <div class="bktotal"><span>Estimated total</span><b id="bkTotal">USD 0</b></div>
-   <p id="bkHint" class="small" style="font-size:.8rem;color:#777;margin-top:4px">Includes breakfast. Pay at the hotel — cash, MTN MoMo or Airtel Money.</p>
-   <button id="bkGo" class="btn" type="button" style="width:100%;margin-top:14px">Reserve Now</button>
-   <p id="bkErr" style="display:none;color:#b33;margin-top:10px;font-size:.85rem"></p>
-  </div></div>
-  <div id="bkDone" style="display:none" class="card"><div class="b" style="text-align:center">
+  <div id="bkform" class="bkcard">
+   <div class="bkhead"><b>Your reservation</b><span>No booking fees · Pay at the hotel</span></div>
+
+   <div class="bkgrp">
+    <label class="bkf" for="bkName"><span>Full name</span><input id="bkName" type="text" placeholder="e.g. John Mugisha" autocomplete="name" required></label>
+    <label class="bkf" for="bkPhone"><span>Phone / WhatsApp</span><input id="bkPhone" type="tel" placeholder="+256 7XX XXX XXX" autocomplete="tel" required></label>
+   </div>
+
+   <div class="bkgrp">
+    <label class="bkf" for="bkRoom"><span>Room type</span>
+     <select id="bkRoom">
+      <option value="Standard Double" data-price="24">Standard Double Room — USD 24 / night</option>
+      <option value="Standard Twin" data-price="29">Standard Twin Room — USD 29 / night</option>
+      <option value="Deluxe Double" data-price="35">Deluxe Double Room — USD 35 / night</option>
+     </select></label>
+    <label class="bkf" for="bkGuests"><span>Guests</span>
+     <select id="bkGuests"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option></select></label>
+   </div>
+
+   <div class="bkgrp">
+    <label class="bkf" for="bkIn"><span>Check-in</span><input id="bkIn" type="date" required></label>
+    <label class="bkf" for="bkOut"><span>Check-out</span><input id="bkOut" type="date" required></label>
+   </div>
+
+   <label class="bkf" for="bkNotes"><span>Special requests <i>(optional)</i></span>
+    <textarea id="bkNotes" rows="3" placeholder="Airport pick-up, late check-in, dietary needs…"></textarea></label>
+
+   <div class="bktotal">
+    <div><small>Estimated total</small><div id="bkNights" class="bknights">2 nights</div></div>
+    <b id="bkTotal">USD 0</b>
+   </div>
+   <ul class="bkperks"><li>Breakfast included</li><li>Free Wi-Fi &amp; secure parking</li><li>Pay with cash, MTN MoMo or Airtel Money</li></ul>
+
+   <button id="bkGo" class="bkbtn" type="button">Reserve Now</button>
+   <p id="bkErr" class="bkerr" style="display:none"></p>
+   <p class="bkfine">You'll confirm instantly on WhatsApp. Free cancellation up to 24 hours before check-in.</p>
+  </div>
+  <div id="bkDone" style="display:none" class="bkcard"><div style="text-align:center">
    <h2 style="margin-bottom:8px">Reservation received!</h2>
    <p id="bkRef" style="font-family:monospace;font-size:1.05rem;margin-bottom:14px"></p>
    <p class="lead" style="margin-bottom:14px">Your booking request is ready. Tap below to confirm instantly on WhatsApp — or call <a href="tel:+256775193137">0775 193137</a>.</p>
@@ -120,7 +168,7 @@
  }
  function calc(){
   var n=nights(),p=+roomS.selectedOptions[0].getAttribute('data-price');
-  tot.textContent='USD '+(n>0?n*p:0)+(n>0&&n>=7?' (long-stay discount may apply)':'');
+  tot.textContent='USD '+(n>0?n*p:0);var nn=document.getElementById('bkNights');if(nn)nn.textContent=n>0?n+' night'+(n>1?'s':'')+' × USD '+p:'Select your dates';
   document.getElementById('bkErr').style.display='none';
  }
  inD.addEventListener('change',function(){outD.min=inD.value;var n=nights();if(n<1){outD.value=inD.value;outD.dispatchEvent(new Event('change'))}calc()});
