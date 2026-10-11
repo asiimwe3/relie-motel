@@ -60,7 +60,7 @@
   <div id="bkDone" style="display:none" class="card"><div class="b" style="text-align:center">
    <h2 style="margin-bottom:8px">Reservation received!</h2>
    <p id="bkRef" style="font-family:monospace;font-size:1.05rem;margin-bottom:14px"></p>
-   <p class="lead" style="margin-bottom:14px">Your booking request is saved. Tap below to confirm instantly on WhatsApp — or call <a href="tel:+256775193137">0775 193137</a>.</p>
+   <p class="lead" style="margin-bottom:14px">Your booking request is ready. Tap below to confirm instantly on WhatsApp — or call <a href="tel:+256775193137">0775 193137</a>.</p>
    <a id="bkWa" class="btn" href="#">Confirm on WhatsApp</a>
   </div></div>
  </div>
@@ -149,7 +149,8 @@
    .then(function(d){
      document.getElementById('bkform').style.display='none';
      document.getElementById('bkDone').style.display='block';
-     document.getElementById('bkRef').textContent='Reference: RM-'+(d.booking&&d.booking.id?d.booking.id.slice(-6).toUpperCase():'PENDING');
+     var ref=(d.booking&&d.booking.id)?d.booking.id.slice(-6).toUpperCase():(Date.now().toString(36).slice(-4).toUpperCase());
+     document.getElementById('bkRef').textContent='Reference: RM-'+ref;
      document.getElementById('bkWa').href=wa;
      window.open(wa,'_blank');
    })
