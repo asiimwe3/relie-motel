@@ -197,41 +197,37 @@
 
   /* ---------- UI BAR ---------- */
   function buildBar() {
-    var bar = document.createElement('div');
-    bar.className = 'rl-bar';
-    bar.setAttribute('role', 'region'); bar.setAttribute('aria-label', 'Language, currency and theme');
     var lo = LANGS.map(function (x) { return '<option value="' + x[0] + '">' + x[1] + '</option>'; }).join('');
-    var co = CURRENCIES.map(function (x) { return '<option value="' + x[0] + '">' + x[0] + ' · ' + x[2] + '</option>'; }).join('');
-    bar.innerHTML =
-      '<button type="button" class="rl-fab" id="rlFab" aria-label="Language, currency and theme" aria-expanded="false">' +
-      '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg>' +
-      '<span id="rlFabLbl">EN · USD</span></button>' +
-      '<div class="rl-panel" id="rlPanel" hidden>' +
-      '<label><span id="rlL1">Language</span><select id="rlLang">' + lo + '</select></label>' +
-      '<label><span id="rlL2">Currency</span><select id="rlCur">' + co + '</select></label>' +
-      '<div class="rl-theme-wrap"><span id="rlL3">Theme</span><div class="rl-theme">' +
-      '<button type="button" data-t="light" id="rlT1">Light</button><button type="button" data-t="dark" id="rlT2">Dark</button><button type="button" data-t="gold" id="rlT3">Gold</button></div></div>' +
-      '<p class="rl-note" id="rlNote"></p></div>';
-    document.body.appendChild(bar);
-    var fab = bar.querySelector('#rlFab'), panel = bar.querySelector('#rlPanel');
-    fab.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var open = panel.hidden; panel.hidden = !open; fab.setAttribute('aria-expanded', open);
+    var co = CURRENCIES.map(function (x) { return '<option value="' + x[0] + '">' + x[0] + '</option>'; }).join('');
+    var THEME_ICONS = { light: '\u2600', dark: '\u263E', gold: '\u2726' };
+    var cluster = document.createElement('div');
+    cluster.className = 'rl-top';
+    cluster.setAttribute('role', 'group');
+    cluster.setAttribute('aria-label', 'Language, currency and theme');
+    cluster.innerHTML =
+      '<select id="rlLang" aria-label="Language">' + lo + '</select>' +
+      '<select id="rlCur" aria-label="Currency">' + co + '</select>' +
+      '<button type="button" id="rlTheme" aria-label="Switch theme" title="Switch theme">' + (THEME_ICONS[root.getAttribute('data-theme')] || '\u2600') + '</button>';
+    var host = document.querySelector('.topbar') || document.body;
+    host.appendChild(cluster);
+    cluster.querySelector('#rlLang').addEventListener('change', function () { applyLang(this.value); });
+    cluster.querySelector('#rlCur').addEventListener('change', function () { applyCurrency(this.value); updateBarLabels(); });
+    cluster.querySelector('#rlTheme').addEventListener('click', function () {
+      var order = ['light', 'dark', 'gold'];
+      var cur = root.getAttribute('data-theme');
+      applyTheme(order[(order.indexOf(cur) + 1) % order.length]);
+      updateBarLabels();
     });
-    document.addEventListener('click', function (e) { if (!bar.contains(e.target)) { panel.hidden = true; fab.setAttribute('aria-expanded', 'false'); } });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') panel.hidden = true; });
-    bar.querySelector('#rlLang').addEventListener('change', function () { applyLang(this.value); });
-    bar.querySelector('#rlCur').addEventListener('change', function () { applyCurrency(this.value); updateBarLabels(); });
-    bar.querySelector('.rl-theme').addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) applyTheme(b.dataset.t); });
-    bar.querySelector('#rlLang').value = lang; bar.querySelector('#rlCur').value = cur;
+    cluster.querySelector('#rlLang').value = lang;
+    cluster.querySelector('#rlCur').value = cur;
+    window.addEventListener('relie:theme', function () { updateBarLabels(); });
   }
   function updateBarLabels() {
     var q = function (id) { return document.getElementById(id); };
-    if (!q('rlL1')) return;
-    q('rlL1').textContent = T('lang'); q('rlL2').textContent = T('cur'); q('rlL3').textContent = T('theme');
-    q('rlT1').textContent = T('light'); q('rlT2').textContent = T('dark'); q('rlT3').textContent = T('gold');
-    q('rlNote').textContent = T('rates');
-    q('rlFabLbl').textContent = lang.toUpperCase() + ' · ' + cur;
+    if (!q('rlLang')) return;
+    q('rlLang').value = lang; q('rlCur').value = cur;
+    var icons = { light: '\u2600', dark: '\u263E', gold: '\u2726' };
+    q('rlTheme').textContent = icons[root.getAttribute('data-theme')] || '\u2600';
   }
 
   /* ---------- BOOT ---------- */
