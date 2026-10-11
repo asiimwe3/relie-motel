@@ -2,7 +2,7 @@
 (function(){
  var slides=document.querySelectorAll('.slide');if(!slides.length)return;
  var i=0,timer;
- function show(n){slides[i].classList.remove('on');i=(n+slides.length)%slides.length;slides[i].classList.add('on')}
+ function show(n){slides[i].classList.remove('on');i=(n+slides.length)%slides.length;var im=slides[i].querySelector('img');if(im&&im.dataset.src){im.src=im.dataset.src;delete im.dataset.src}slides[i].classList.add('on')}
  function next(){show(i+1)} 
  timer=setInterval(next,6000);
  document.querySelectorAll('.arrows button').forEach(function(b){
