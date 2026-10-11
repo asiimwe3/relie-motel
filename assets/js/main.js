@@ -1,6 +1,6 @@
 // hero slideshow
 (function(){
- var slides=document.querySelectorAll('.slide');if(!slides.length)return;
+ var slides=document.querySelectorAll('.slide');if(!slides.length)return;requestAnimationFrame(function(){setTimeout(function(){var hv=document.querySelector('.hero');if(hv)hv.classList.add('sw')},0)});
  var i=0,timer;
  function show(n){slides[i].classList.remove('on');i=(n+slides.length)%slides.length;var im=slides[i].querySelector('img');if(im&&im.dataset.src){im.src=im.dataset.src;delete im.dataset.src}slides[i].classList.add('on')}
  function next(){show(i+1)} 
