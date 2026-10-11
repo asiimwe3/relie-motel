@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Book a Room Online | Direct Booking | Relie Motel Fort Portal</title>
 <meta name="description" content="Book your stay at Relie Motel Fort Portal online in under a minute. Choose your room, dates and guests — instant confirmation via WhatsApp. Rooms from UGX 70,000 with breakfast.">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media=\'all\'">
 <link rel="stylesheet" href="assets/css/style.css?v=7">
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
 <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
@@ -63,8 +63,9 @@
   </nav>
  </div>
 </div>
-<section class="page-hero"><img src="assets/images/relie-aerial-entrance.webp" alt="Relie Motel entrance, aerial view" fetchpriority="high" decoding="async">
+<section class="page-hero"><img width="1200" height="799" src="assets/images/relie-aerial-entrance.webp" alt="Relie Motel entrance, aerial view" fetchpriority="high" decoding="async">
  <div class="cap"><div class="tag">Direct Booking</div><h1>Book Your Stay</h1></div></section>
+<main>
 <section class="sec">
  <div class="wrap bkwrap">
   <div class="tag">Reserve in under a minute</div>
@@ -80,7 +81,7 @@
 
    <div class="bkgrp one">
     <label class="bkf" for="bkRoom"><span>Room type</span>
-     <select id="bkRoom">
+     <select id="bkRoom" aria-label="Room type">
       <option value="Standard Double" data-price="70000">Standard Double Room · UGX 70,000 / night</option>
       <option value="Standard Twin" data-price="150000">Standard Twin Room · UGX 150,000 / night</option>
       <option value="Deluxe Double" data-price="200000">Deluxe Double Room · UGX 200,000 / night</option>
@@ -91,7 +92,7 @@
     <label class="bkf" for="bkIn"><span>Check-in</span><input id="bkIn" type="date" required></label>
     <label class="bkf" for="bkOut"><span>Check-out</span><input id="bkOut" type="date" required></label>
     <label class="bkf" for="bkGuests"><span>Guests</span>
-     <select id="bkGuests"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option></select></label>
+     <select id="bkGuests" aria-label="Guests"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option></select></label>
    </div>
 
    <label class="bkf" for="bkNotes"><span>Special requests <i>(optional)</i></span>
@@ -115,6 +116,7 @@
   </div></div>
  </div>
 </section>
+</main>
 <footer>
  <div class="wrap">
   <div class="fgrid">

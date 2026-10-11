@@ -7,8 +7,8 @@
 <title>Relie Motel | Best Affordable Motel in Fort Portal, Uganda</title>
 <meta name="description" content="Relie Motel — affordable motel in Fort Portal City, western Uganda. Clean rooms from UGX 70,000/night with breakfast, free Wi-Fi, secure parking, restaurant & bar. 13 km from Kibale National Park. Book direct on WhatsApp.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/images/relie-aerial-neighborhood.webp" fetchpriority="high">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/relie-aerial-courtyard.webp" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media=\'all\'">
 <link rel="stylesheet" href="assets/css/style.css?v=7">
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
 <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
@@ -40,26 +40,27 @@
   <div><label>CHECK IN</label><input type="date" id="ci"></div>
   <div><label>CHECK OUT</label><input type="date" id="co"></div>
   <div><label>GUESTS</label>
-   <select id="gs"><option>1 Guest</option><option selected>2 Guests</option><option>3 Guests</option><option>4+ Guests</option><option>Group / Event</option></select></div>
+   <select id="gs" aria-label="Guests"><option>1 Guest</option><option selected>2 Guests</option><option>3 Guests</option><option>4+ Guests</option><option>Group / Event</option></select></div>
   <button id="bookBtn">BOOK NOW</button>
  </div>
 </div>
+<main>
 <section class="hero">
- <div class="slide on"><img src="assets/images/relie-aerial-courtyard.webp" alt="Relie Motel red tiled roof, courtyard and secure parking from the air" loading="lazy" fetchpriority="high" decoding="async">
+ <div class="slide on"><img width="1200" height="799" src="assets/images/relie-aerial-courtyard.webp" alt="Relie Motel red tiled roof, courtyard and secure parking from the air" fetchpriority="high" decoding="async">
   <div class="cap"><div class="tag">Our Building</div><h2>Curved Balconies Over The Hills</h2></div></div>
- <div class="slide"><img src="assets/images/relie-aerial-night.webp" alt="Relie Motel lit up at night, aerial view" loading="lazy" decoding="async">
+ <div class="slide"><img width="1200" height="675" src="assets/images/relie-aerial-night.webp" alt="Relie Motel lit up at night, aerial view" loading="lazy" decoding="async">
   <div class="cap"><div class="tag">Fort Portal · Western Uganda</div><h2>Welcoming Day and Night</h2></div></div>
- <div class="slide"><img src="assets/images/relie-aerial-entrance.webp" alt="Aerial view of Relie Motel entrance with palm trees" loading="lazy" decoding="async">
+ <div class="slide"><img width="1200" height="799" src="assets/images/relie-aerial-entrance.webp" alt="Aerial view of Relie Motel entrance with palm trees" loading="lazy" decoding="async">
   <div class="cap"><div class="tag">From The Air</div><h2>Right In The Heart of Fort Portal</h2></div></div>
- <div class="slide"><img src="assets/images/relie-aerial-courtyard.webp" alt="Relie Motel courtyard with secure parking from the air" loading="lazy" decoding="async">
+ <div class="slide"><img width="1200" height="799" src="assets/images/relie-aerial-courtyard.webp" alt="Relie Motel courtyard with secure parking from the air" loading="lazy" decoding="async">
   <div class="cap"><div class="tag">Arrive &amp; Unwind</div><h2>Secure On-Site Parking &amp; Courtyard</h2></div></div>
- <div class="slide"><img src="assets/images/relie-massage.webp" alt="Relie Motel massage room" loading="lazy" decoding="async">
+ <div class="slide"><img width="900" height="1088" src="assets/images/relie-massage.webp" alt="Relie Motel massage room" loading="lazy" decoding="async">
   <div class="cap"><div class="tag">Relax &amp; Recharge</div><h2>In-House Massage Room</h2></div></div>
- <div class="slide"><img src="assets/images/relie-tooro-palace.webp" alt="Tooro Kingdom Palace, Fort Portal" loading="lazy" decoding="async">
+ <div class="slide"><img width="1024" height="614" src="assets/images/relie-tooro-palace.webp" alt="Tooro Kingdom Palace, Fort Portal" loading="lazy" decoding="async">
   <div class="cap"><div class="tag">Right On Our Doorstep</div><h2>The Tooro Kingdom Palace</h2></div></div>
- <div class="slide"><img src="assets/images/relie-aerial-neighborhood.webp" alt="Relie Motel within central Fort Portal, aerial view" decoding="async" loading="lazy" decoding="async">
+ <div class="slide"><img width="1200" height="674" src="assets/images/relie-aerial-neighborhood.webp" alt="Relie Motel within central Fort Portal, aerial view" decoding="async" loading="lazy" >
   <div class="cap"><div class="tag">Fort Portal · Western Uganda</div><h2>The Leading Motel in Uganda's Tourism City</h2></div></div>
- <div class="arrows"><button data-d="0">&#8249;</button><button data-d="1">&#8250;</button></div>
+ <div class="arrows"><button data-d="0" aria-label="Previous slide">&#8249;</button><button data-d="1" aria-label="Next slide">&#8250;</button></div>
 </section>
 
 <section class="sec alt">
@@ -77,9 +78,9 @@
   <h2>Find Your Perfect Stay</h2>
   <p class="lead">Explore our range of accommodations, from cozy standard rooms to spacious deluxe doubles, tailored to suit every traveller's preference.</p>
   <div class="cards">
-   <div class="card"><img src="assets/images/relie-room-double.webp" alt="Standard Double Room" loading="lazy" decoding="async"><div class="b"><h3>Standard Double Room</h3><p style="font-size:.9rem;color:#666">1 double bed · private bathroom · Wi-Fi · TV</p><p class="rate">Rates from UGX 70,000</p><div class="links"><a href="rooms/double.html">See room details</a><a href="https://wa.me/256775193137?text=Hello%20Relie%20Motel!%20I%27d%20like%20to%20book%20the%20Standard%20Double%20Room.">Book now</a></div></div></div>
-   <div class="card"><img src="assets/images/relie-room-bedside.webp" alt="Standard Twin Room" loading="lazy" decoding="async"><div class="b"><h3>Standard Twin Room</h3><p style="font-size:.9rem;color:#666">2 single beds · writing desk · sitting area</p><p class="rate">Rates from UGX 150,000</p><div class="links"><a href="rooms/twin.html">See room details</a><a href="https://wa.me/256775193137?text=Hello%20Relie%20Motel!%20I%27d%20like%20to%20book%20the%20Standard%20Twin%20Room.">Book now</a></div></div></div>
-   <div class="card"><img src="assets/images/relie-room-deluxe.webp" alt="Deluxe Double Room" loading="lazy" decoding="async"><div class="b"><h3>Deluxe Double Room</h3><p style="font-size:.9rem;color:#666">Upscale double · sitting area · garden-facing</p><p class="rate">Rates from UGX 200,000</p><div class="links"><a href="rooms/deluxe.html">See room details</a><a href="https://wa.me/256775193137?text=Hello%20Relie%20Motel!%20I%27d%20like%20to%20book%20the%20Deluxe%20Double%20Room.">Book now</a></div></div></div>
+   <div class="card"><img width="900" height="591" src="assets/images/relie-room-double.webp" alt="Standard Double Room" loading="lazy" decoding="async"><div class="b"><h3>Standard Double Room</h3><p style="font-size:.9rem;color:#666">1 double bed · private bathroom · Wi-Fi · TV</p><p class="rate">Rates from UGX 70,000</p><div class="links"><a href="rooms/double.html">See room details</a><a href="https://wa.me/256775193137?text=Hello%20Relie%20Motel!%20I%27d%20like%20to%20book%20the%20Standard%20Double%20Room.">Book now</a></div></div></div>
+   <div class="card"><img width="900" height="1088" src="assets/images/relie-room-bedside.webp" alt="Standard Twin Room" loading="lazy" decoding="async"><div class="b"><h3>Standard Twin Room</h3><p style="font-size:.9rem;color:#666">2 single beds · writing desk · sitting area</p><p class="rate">Rates from UGX 150,000</p><div class="links"><a href="rooms/twin.html">See room details</a><a href="https://wa.me/256775193137?text=Hello%20Relie%20Motel!%20I%27d%20like%20to%20book%20the%20Standard%20Twin%20Room.">Book now</a></div></div></div>
+   <div class="card"><img width="900" height="1088" src="assets/images/relie-room-deluxe.webp" alt="Deluxe Double Room" loading="lazy" decoding="async"><div class="b"><h3>Deluxe Double Room</h3><p style="font-size:.9rem;color:#666">Upscale double · sitting area · garden-facing</p><p class="rate">Rates from UGX 200,000</p><div class="links"><a href="rooms/deluxe.html">See room details</a><a href="https://wa.me/256775193137?text=Hello%20Relie%20Motel!%20I%27d%20like%20to%20book%20the%20Deluxe%20Double%20Room.">Book now</a></div></div></div>
   </div>
   <a class="btn em" href="stay.html">See All Accommodations</a>
  </div>
@@ -92,7 +93,7 @@
   <p>Situated a short walk from the Tooro Kingdom Palace and minutes from the crater lakes, our motel offers unparalleled convenience to the best of Uganda's Tourism City. Markets, restaurants and the golf course are all within easy reach.</p>
   <p style="margin-top:18px"><a class="btn" href="explore.html">Explore</a></p>
  </div>
- <img src="assets/images/relie-aerial-neighborhood.webp" alt="Relie Motel within central Fort Portal, aerial view" loading="lazy" decoding="async">
+ <img width="1200" height="674" src="assets/images/relie-aerial-neighborhood.webp" alt="Relie Motel within central Fort Portal, aerial view" loading="lazy" decoding="async">
 </section>
 
 <section class="sec dark">
@@ -110,9 +111,9 @@
   <h2>Uganda's Tourism City At Your Doorstep</h2>
   <p class="lead">Discover Fort Portal's vibrant town life with markets and craft shops, savor crater-lake views at sunset, and trek chimpanzees in Kibale National Park during your stay with us.</p>
   <div class="cards">
-   <div class="card"><img src="assets/images/places/kibale.webp" alt="Chimpanzee in Kibale National Park, Fort Portal" loading="lazy" decoding="async"><div class="b"><h3>Kibale National Park</h3><p style="font-size:.9rem">East Africa's top chimpanzee trekking destination, 13 km away.</p></div></div>
-   <div class="card"><img src="assets/images/places/crater.webp" alt="Crater lakes near Fort Portal" loading="lazy" decoding="async"><div class="b"><h3>Crater Lakes</h3><p style="font-size:.9rem">The "Switzerland of Uganda" — scenic drives and hikes minutes away.</p></div></div>
-   <div class="card"><img src="assets/images/relie-tooro-palace.webp" alt="Tooro Kingdom Palace (Karuzika), Fort Portal" loading="lazy" decoding="async"><div class="b"><h3>Tooro Culture</h3><p style="font-size:.9rem">Kingdom Palace, Lugard Monument and vibrant markets — a 15-minute walk.</p></div></div>
+   <div class="card"><img width="1024" height="682" src="assets/images/places/kibale.webp" alt="Chimpanzee in Kibale National Park, Fort Portal" loading="lazy" decoding="async"><div class="b"><h3>Kibale National Park</h3><p style="font-size:.9rem">East Africa's top chimpanzee trekking destination, 13 km away.</p></div></div>
+   <div class="card"><img width="1024" height="682" src="assets/images/places/crater.webp" alt="Crater lakes near Fort Portal" loading="lazy" decoding="async"><div class="b"><h3>Crater Lakes</h3><p style="font-size:.9rem">The "Switzerland of Uganda" — scenic drives and hikes minutes away.</p></div></div>
+   <div class="card"><img width="1024" height="614" src="assets/images/relie-tooro-palace.webp" alt="Tooro Kingdom Palace (Karuzika), Fort Portal" loading="lazy" decoding="async"><div class="b"><h3>Tooro Culture</h3><p style="font-size:.9rem">Kingdom Palace, Lugard Monument and vibrant markets — a 15-minute walk.</p></div></div>
   </div>
   <a class="btn em" href="explore.html">Explore</a>
  </div>
@@ -123,9 +124,10 @@
   <div class="tag">Seaside Serenity Awaits</div>
   <h2>Ready for Your Fort Portal Escape?</h2>
   <p class="lead">Book direct for our best rate and instant WhatsApp confirmation.</p>
-  <a class="btn" href="https://wa.me/256775193137">Book Now</a>
+  <a class="btn" href="https://wa.me/256775193137">Book on WhatsApp</a>
  </div>
 </section>
+</main>
 <footer>
  <div class="wrap">
   <div class="fgrid">
