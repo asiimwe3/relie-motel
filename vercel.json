@@ -10,14 +10,55 @@
       ]
     }
   ],
+  "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/(book|stay|dine|grounds|groups|explore|gallery|contact|packages)/?",
-      "destination": "/$1.html"
+      "source": "/book",
+      "destination": "/book.html"
     },
     {
-      "source": "/rooms/(deluxe|double|twin)/?",
-      "destination": "/rooms/$1.html"
+      "source": "/stay",
+      "destination": "/stay.html"
+    },
+    {
+      "source": "/dine",
+      "destination": "/dine.html"
+    },
+    {
+      "source": "/grounds",
+      "destination": "/grounds.html"
+    },
+    {
+      "source": "/groups",
+      "destination": "/groups.html"
+    },
+    {
+      "source": "/explore",
+      "destination": "/explore.html"
+    },
+    {
+      "source": "/gallery",
+      "destination": "/gallery.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/packages",
+      "destination": "/packages.html"
+    },
+    {
+      "source": "/rooms/deluxe",
+      "destination": "/rooms/deluxe.html"
+    },
+    {
+      "source": "/rooms/double",
+      "destination": "/rooms/double.html"
+    },
+    {
+      "source": "/rooms/twin",
+      "destination": "/rooms/twin.html"
     }
   ]
 }
