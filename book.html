@@ -154,7 +154,7 @@
 </footer>
 <script>
 (function(){
- var API='https://solene-aed9a259.base44.app/functions/createRelieBooking';
+ // Bookings go direct to WhatsApp — no external API.
  var inD=document.getElementById('bkIn'),outD=document.getElementById('bkOut'),roomS=document.getElementById('bkRoom'),
      tot=document.getElementById('bkTotal'),go=document.getElementById('bkGo');
  function pad(n){return (n<10?'0':'')+n}
@@ -190,26 +190,15 @@
   if(n<1){err.textContent='Check-out must be after check-in.';err.style.display='block';return}
   var payload={guest_name:name,guest_phone:phone,room_type:roomS.value,check_in:inD.value,check_out:outD.value,
                guests:+guests,nights:n,total_ugx:n*(+roomS.selectedOptions[0].getAttribute('data-price')),notes:notes};
-  go.disabled=true;go.textContent='Reserving…';
   var msg='Booking request at Relie Motel\nName: '+name+'\nRoom: '+roomS.value+'\nCheck-in: '+inD.value+'\nCheck-out: '+outD.value+' ('+n+' night'+(n>1?'s':'')+')\nGuests: '+guests+'\nEstimated total: UGX '+payload.total_ugx.toLocaleString()+(window.RelieMoney&&window.RelieMoney.cur!=='UGX'?' (~'+window.RelieMoney.fmt(payload.total_ugx)+')':'')+'\nPhone: '+phone+(notes?'\nNotes: '+notes:'');
   var wa='https://wa.me/256775193137?text='+encodeURIComponent(msg);
-  new Promise(function(res){
-    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-     .then(function(r){return r.json()}).then(res).catch(function(){res({ok:false})});
-    setTimeout(function(){res({ok:false})},2500);
-  })
-   .then(function(d){
-     document.getElementById('bkform').style.display='none';
-     document.getElementById('bkDone').style.display='block';
-     var ref=(d.booking&&d.booking.id)?d.booking.id.slice(-6).toUpperCase():(Date.now().toString(36).slice(-4).toUpperCase());
-     document.getElementById('bkRef').textContent='Reference: RM-'+ref;
-     document.getElementById('bkWa').href=wa;
-     window.open(wa,'_blank');
-   })
-   .catch(function(){
-     // backend unreachable: never lose the booking — go straight to WhatsApp
-     window.location.href=wa;
-   });
+  // All bookings go DIRECT to WhatsApp — no middleman, no delay, works offline.
+  document.getElementById('bkform').style.display='none';
+  document.getElementById('bkDone').style.display='block';
+  var ref=Date.now().toString(36).slice(-4).toUpperCase();
+  document.getElementById('bkRef').textContent='Reference: RM-'+ref;
+  document.getElementById('bkWa').href=wa;
+  window.open(wa,'_blank');
  });
 })();
 </script>

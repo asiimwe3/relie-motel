@@ -17,6 +17,6 @@
   var co=document.getElementById('co').value||'flexible dates';
   var g=document.getElementById('gs').value;
   var msg="Hello Relie Motel! I'd like to book: Check-in "+ci+", Check-out "+co+", "+g+". Please confirm availability and best rate.";
-  window.open("https://wa.me/256778472498?text="+encodeURIComponent(msg),'_blank');
+  window.open("https://wa.me/256775193137?text="+encodeURIComponent(msg),'_blank');
  });
 })();
