@@ -29,7 +29,7 @@
 .bkhead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;border-bottom:1px solid #eee;padding-bottom:16px;margin-bottom:24px}
 .bkhead b{font-family:'Playfair Display',serif;font-size:1.35rem;color:#0b4f3f}
 .bkhead span{font-size:.78rem;color:#888;letter-spacing:.04em}
-.bkgrp{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.bkgrp{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}.bkgrp.one{grid-template-columns:1fr}.bkgrp.three{grid-template-columns:1fr 1fr 1fr}
 .bkf{display:block;margin-bottom:0}
 .bkf>span{display:block;font-size:.78rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#444;margin-bottom:8px}
 .bkf>span i{font-weight:400;text-transform:none;letter-spacing:0;color:#999}
@@ -48,7 +48,7 @@
 .bkbtn:hover{background:#c29f2c}.bkbtn:active{transform:scale(.99)}.bkbtn:disabled{opacity:.7;cursor:wait}
 .bkerr{color:#b3261e;background:#fdecea;border-radius:8px;padding:10px 14px;margin:14px 0 0;font-size:.9rem}
 .bkfine{text-align:center;font-size:.78rem;color:#888;margin:16px 0 0}
-@media(max-width:640px){.bkcard{padding:24px 18px;border-radius:14px}.bkgrp{grid-template-columns:1fr;gap:16px}.bktotal b{font-size:1.6rem}.bkhead span{display:none}}
+@media(max-width:640px){.bkcard{padding:24px 18px;border-radius:14px}.bkgrp,.bkgrp.three{grid-template-columns:1fr;gap:16px}.bktotal b{font-size:1.6rem}.bkhead span{display:none}}
 </style>
 </head>
 <body>
@@ -68,7 +68,7 @@
   <div class="tag">Reserve in under a minute</div>
   <h2>Direct Online Booking</h2>
   <p class="lead">Book any of our 26 rooms direct with us — no booking fees. Pay at the hotel with cash, MTN MoMo or Airtel Money. Your reservation is confirmed instantly on WhatsApp.</p>
-  <div id="bkform" class="bkcard">
+  <div id="bkform" class="bkcard" style="scroll-margin-top:90px">
    <div class="bkhead"><b>Your reservation</b><span>No booking fees · Pay at the hotel</span></div>
 
    <div class="bkgrp">
@@ -76,20 +76,20 @@
     <label class="bkf" for="bkPhone"><span>Phone / WhatsApp</span><input id="bkPhone" type="tel" placeholder="+256 7XX XXX XXX" autocomplete="tel" required></label>
    </div>
 
-   <div class="bkgrp">
+   <div class="bkgrp one">
     <label class="bkf" for="bkRoom"><span>Room type</span>
      <select id="bkRoom">
-      <option value="Standard Double" data-price="24">Standard Double Room — USD 24 / night</option>
-      <option value="Standard Twin" data-price="29">Standard Twin Room — USD 29 / night</option>
-      <option value="Deluxe Double" data-price="35">Deluxe Double Room — USD 35 / night</option>
+      <option value="Standard Double" data-price="24">Standard Double Room · USD 24 / night</option>
+      <option value="Standard Twin" data-price="29">Standard Twin Room · USD 29 / night</option>
+      <option value="Deluxe Double" data-price="35">Deluxe Double Room · USD 35 / night</option>
      </select></label>
-    <label class="bkf" for="bkGuests"><span>Guests</span>
-     <select id="bkGuests"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option></select></label>
    </div>
 
-   <div class="bkgrp">
+   <div class="bkgrp three">
     <label class="bkf" for="bkIn"><span>Check-in</span><input id="bkIn" type="date" required></label>
     <label class="bkf" for="bkOut"><span>Check-out</span><input id="bkOut" type="date" required></label>
+    <label class="bkf" for="bkGuests"><span>Guests</span>
+     <select id="bkGuests"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option></select></label>
    </div>
 
    <label class="bkf" for="bkNotes"><span>Special requests <i>(optional)</i></span>
