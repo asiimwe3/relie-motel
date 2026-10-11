@@ -6,11 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Standard Twin Room in Fort Portal | Relie Motel</title>
 <meta name="description" content="Book the Standard Twin Room at Relie Motel Fort Portal: two single beds, writing desk, free Wi-Fi and breakfast from UGX 150,000 per night — ideal for colleagues and friends.">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../assets/fonts/playfair.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../assets/fonts/montserrat.woff2">
 <style>
+/* Self-hosted fonts: no swap-shift, no third-party */
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400 900;font-display:block;src:url(../assets/fonts/playfair.woff2) format('woff2')}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400 900;font-display:block;src:url(../assets/fonts/playfair-italic.woff2) format('woff2')}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:400 700;font-display:block;src:url(../assets/fonts/montserrat.woff2) format('woff2')}
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--gold:#d4af37;--em:#0b4f3f;--dark:#0d1512;--cream:#f7f4ee}
 body{font-family:Montserrat,system-ui,sans-serif;background:var(--cream);color:#222;line-height:1.7}
@@ -73,7 +75,7 @@ html[data-theme=dark] .card .rate,html[data-theme=gold] .card .rate{color:var(--
 .amen-grid div b{color:var(--em)}
 ul.tick{list-style:none;text-align:left;max-width:640px;margin:0 auto}
 ul.tick li{padding-left:26px;position:relative;margin:9px 0}
-ul.tick li:before{content:'¹3';position:absolute;left:0;color:var(--gold)}
+ul.tick li:before{content:'\2713';position:absolute;left:0;color:var(--gold)}
 footer{background:var(--dark);color:#999;padding:48px 0 90px;font-size:.82rem}
 footer a{color:#ddd;display:inline-block;padding:8px 0}
 footer a .thin{display:inline}
