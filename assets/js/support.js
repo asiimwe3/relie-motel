@@ -7,11 +7,11 @@
 
   var KB = [
     { k: ['room', 'rooms', 'stay', 'sleep', 'accommodation', 'bed', 'double', 'twin', 'deluxe', 'suite', 'family'],
-      a: 'We have 26 spotless rooms in three types: Standard Double ($24/night), Standard Twin ($29/night) and Deluxe Double ($35/night). All have private bathrooms, free Wi-Fi, TV and breakfast is included. Which one interests you?',
+      a: 'We have 26 spotless rooms in three types: Standard Double (UGX 70,000/night), Standard Twin (UGX 150,000/night) and Deluxe Double (UGX 200,000/night). All have private bathrooms, free Wi-Fi, TV and breakfast is included. Which one interests you?',
       c: [['Book a room', 'booking'], ['See facilities', 'facilities']] },
 
     { k: ['price', 'prices', 'cost', 'rate', 'rates', 'how much', 'fee', 'charge', 'expensive', 'cheap', 'affordable', 'discount', 'offer'],
-      a: 'Our rates: Standard Double $24/night, Standard Twin $29/night, Deluxe Double $35/night. Breakfast, Wi-Fi and secure parking are included. We also have packages (including Kibale chimp trekking bundles) and our best-rate guarantee when you book direct. Currency switcher at the top converts to UGX, KES, EUR and more.',
+      a: 'Our rates: Standard Double UGX 70,000/night, Standard Twin UGX 150,000/night, Deluxe Double UGX 200,000/night. Breakfast, Wi-Fi and secure parking are included. We also have packages (including Kibale chimp trekking bundles) and our best-rate guarantee when you book direct. Currency switcher at the top converts to UGX, KES, EUR and more.',
       c: [['See packages', 'packages'], ['Book now', 'booking']] },
 
     { k: ['book', 'booking', 'reserve', 'reservation', 'availability', 'available', 'vacancy'],
@@ -43,7 +43,7 @@
       c: [['Chat on WhatsApp', 'wa'], ['Book a room', 'booking']] },
 
     { k: ['pay', 'payment', 'money', 'cash', 'momo', 'airtel', 'card', 'currency', 'dollar', 'ugx', 'shilling', 'exchange'],
-      a: 'You can pay with cash, MTN MoMo or Airtel Money. Rates are quoted in USD and you can switch currency at the top of the site; payment is made at the hotel.',
+      a: 'You can pay with cash, MTN MoMo or Airtel Money. Rates are quoted in UGX and you can switch currency at the top of the site; payment is made at the hotel.',
       c: [['Room rates', 'rates'], ['Book now', 'booking']] },
 
     { k: ['policy', 'policies', 'cancel', 'cancellation', 'refund', 'pet', 'pets', 'smoking', 'children', 'kids', 'faq', 'question'],

@@ -47,34 +47,35 @@
   root.setAttribute('data-theme', THEMES.indexOf(savedTheme) < 0 ? 'light' : savedTheme);
 
   /* ---------- CURRENCY ---------- */
-  var cur = get('relie_cur', 'USD');
-  function fmt(usd, c) {
+  var cur = get('relie_cur', 'UGX');
+  function fmt(ugx, c) {
     c = c || cur;
-    var v = usd * (rates[c] || 1);
+    if (c === 'UGX') return 'USh ' + Math.round(ugx).toLocaleString(currentLang());
+    var v = (ugx / (rates.UGX || FALLBACK.UGX)) * (rates[c] || 1);
     var sym = (CURRENCIES.filter(function (x) { return x[0] === c; })[0] || [0, c])[1];
-    var whole = BIG[c] === 1 || v >= 1000;
-    var n = whole ? Math.round(v / (v > 20000 ? 100 : 1)) * (v > 20000 ? 100 : 1) : Math.round(v * 100) / 100;
+    var whole = BIG[c] === 1 || v >= 20;
+    var n = whole ? Math.round(v) : Math.round(v * 100) / 100;
     var s = n.toLocaleString(currentLang(), { maximumFractionDigits: whole ? 0 : 2, minimumFractionDigits: 0 });
     return sym + ' ' + s;
   }
   window.RelieMoney = { fmt: fmt, get cur() { return cur; } };
 
-  // Prices in the page are written as USD <n>; wrap them so we can convert.
-  var PRICE_RE = /(Rates from |from )?USD (\d+(?:\.\d+)?)/g;
+  // Prices in the page are written as UGX <n>; wrap them so we can convert.
+  var PRICE_RE = /(Rates from |from )?UGX ([\d,]+(\.\d+)?)/g;
   function markPrices() {
     var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
       acceptNode: function (n) {
         var p = n.parentNode;
         if (!p || /^(SCRIPT|STYLE|NOSCRIPT|OPTION|TEXTAREA)$/.test(p.nodeName)) return NodeFilter.FILTER_REJECT;
         if (p.closest && p.closest('[data-noprice]')) return NodeFilter.FILTER_REJECT;
-        return /USD \d/.test(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+        return /UGX \d/.test(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
       }
     });
     var nodes = [], n;
     while ((n = walker.nextNode())) nodes.push(n);
     nodes.forEach(function (node) {
       var html = node.nodeValue.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(PRICE_RE, function (m, pre, num) {
-        return (pre || '') + '<span class="rl-price" data-usd="' + num + '">USD ' + num + '</span>';
+        return (pre || '') + '<span class="rl-price" data-ugx="' + num.replace(/,/g, '') + '">UGX ' + num + '</span>';
       });
       var span = document.createElement('span');
       span.innerHTML = html;
@@ -84,15 +85,15 @@
   }
   function refreshPrices() {
     var els = document.querySelectorAll('.rl-price');
-    for (var i = 0; i < els.length; i++) els[i].textContent = fmt(parseFloat(els[i].dataset.usd));
+    for (var i = 0; i < els.length; i++) els[i].textContent = fmt(parseFloat(els[i].dataset.ugx));
     var opts = document.querySelectorAll('option[data-price]');
     for (var j = 0; j < opts.length; j++) {
       var o = opts[j];
-      if (!o.dataset.label) o.dataset.label = o.textContent.replace(/\s*[·\-—]\s*USD.*$/, '');
+      if (!o.dataset.label) o.dataset.label = o.textContent.replace(/\s*[·\-—]\s*(USD|UGX).*$/, '');
       o.textContent = o.dataset.label + ' · ' + fmt(parseFloat(o.dataset.price)) + ' / ' + (T('night') || 'night');
     }
     var tot = document.getElementById('bkTotal');
-    if (tot && tot.dataset.usd != null) tot.textContent = fmt(parseFloat(tot.dataset.usd));
+    if (tot && tot.dataset.ugx != null) tot.textContent = fmt(parseFloat(tot.dataset.ugx));
     document.dispatchEvent(new CustomEvent('relie:currency', { detail: cur }));
   }
   function applyCurrency(c) {
