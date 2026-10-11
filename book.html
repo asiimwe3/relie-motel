@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Room Online | Direct Booking | Relie Motel Fort Portal</title>
+<meta name="description" content="Book your stay at Relie Motel Fort Portal online in under a minute. Choose your room, dates and guests — instant confirmation via WhatsApp. Rooms from USD 24 with breakfast.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+<link rel="canonical" href="https://relie-motel.vercel.app/book.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Relie Motel">
+<meta property="og:title" content="Book a Room Online | Direct Booking | Relie Motel Fort Portal">
+<meta property="og:description" content="Book your stay at Relie Motel Fort Portal online in under a minute. Rooms from USD 24 with breakfast.">
+<meta property="og:url" content="https://relie-motel.vercel.app/book.html">
+<meta property="og:image" content="https://relie-motel.vercel.app/assets/images/relie-aerial-night.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="geo.region" content="UG">
+<meta name="geo.placename" content="Fort Portal, Uganda">
+<meta name="geo.position" content="0.6518277;30.2714893">
+<meta name="ICBM" content="0.6518277, 30.2714893">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Hotel","@id":"https://relie-motel.vercel.app/#hotel","name":"Relie Motel","description":"Affordable, spotless motel in Fort Portal City, western Uganda. 26 rooms, restaurant & bar, conference hall, massage room, free secure parking and 24/7 front desk, 13 km from Kibale National Park.","url":"https://relie-motel.vercel.app/","telephone":"+256775193137","priceRange":"$24 - $50","currenciesAccepted":"UGX","paymentAccepted":"Cash, MTN MoMo, Airtel Money","address":{"@type":"PostalAddress","streetAddress":"Malibo Road, Bazaar","addressLocality":"Fort Portal","addressRegion":"Kabarole","addressCountry":"UG"},"geo":{"@type":"GeoCoordinates","latitude":0.6518277,"longitude":30.2714893},"checkinTime":"14:30","checkoutTime":"10:00","numberOfRooms":26,"potentialAction":{"@type":"ReserveAction","target":{"@type":"EntryPoint","urlTemplate":"https://relie-motel.vercel.app/book.html","actionPlatform":["http://schema.org/DesktopWebPlatform","http://schema.org/MobileWebPlatform"]},"result":{"@type":"LodgingReservation","name":"Room reservation at Relie Motel"}},"image":"https://relie-motel.vercel.app/assets/images/relie-aerial-night.webp"}</script>
+</head>
+<body>
+<h1 class="sronly">Book a Room at Relie Motel Fort Portal — Direct Online Booking</h1>
+<div class="top">
+ <div class="topbar">
+  <a class="logo" href="index.html"><img src="assets/images/logo.png" alt="" width="34" height="34">RELIE <b>MOTEL</b></a>
+  <nav class="main">
+   <a href="index.html">Home</a><a href="stay.html">Stay</a><a href="grounds.html">The Grounds</a><a href="dine.html">Dine</a><a href="groups.html">Groups</a><a href="explore.html">Explore</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact + FAQ</a><a class="bk" href="book.html">Book Now</a>
+  </nav>
+ </div>
+</div>
+<section class="page-hero"><img src="assets/images/relie-aerial-entrance.webp" alt="Relie Motel entrance, aerial view" fetchpriority="high" decoding="async">
+ <div class="cap"><div class="tag">Direct Booking</div><h1>Book Your Stay</h1></div></section>
+<section class="sec">
+ <div class="wrap" style="max-width:640px">
+  <div class="tag">Reserve in under a minute</div>
+  <h2>Direct Online Booking</h2>
+  <p class="lead">Book any of our 26 rooms direct with us — no booking fees. Pay at the hotel with cash, MTN MoMo or Airtel Money. Your reservation is confirmed instantly on WhatsApp.</p>
+  <div id="bkform" class="card" style="margin-top:26px"><div class="b">
+   <div class="bkrow"><label>Full name<input id="bkName" type="text" placeholder="Your name" required></label>
+   <label>Phone / WhatsApp<input id="bkPhone" type="tel" placeholder="+256 7XX XXX XXX" required></label></div>
+   <div class="bkrow"><label>Room type<select id="bkRoom">
+     <option value="Standard Double" data-price="24">Standard Double Room — USD 24/night</option>
+     <option value="Standard Twin" data-price="29">Standard Twin Room — USD 29/night</option>
+     <option value="Deluxe Double" data-price="35">Deluxe Double Room — USD 35/night</option>
+   </select></label>
+   <label>Guests<select id="bkGuests"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></label></div>
+   <div class="bkrow"><label>Check-in date<input id="bkIn" type="date" required></label>
+   <label>Check-out date<input id="bkOut" type="date" required></label></div>
+   <label>Special requests (optional)<input id="bkNotes" type="text" placeholder="Airport pick-up, late check-in, dietary needs…"></label>
+   <div class="bktotal"><span>Estimated total</span><b id="bkTotal">USD 0</b></div>
+   <p id="bkHint" class="small" style="font-size:.8rem;color:#777;margin-top:4px">Includes breakfast. Pay at the hotel — cash, MTN MoMo or Airtel Money.</p>
+   <button id="bkGo" class="btn" type="button" style="width:100%;margin-top:14px">Reserve Now</button>
+   <p id="bkErr" style="display:none;color:#b33;margin-top:10px;font-size:.85rem"></p>
+  </div></div>
+  <div id="bkDone" style="display:none" class="card"><div class="b" style="text-align:center">
+   <h2 style="margin-bottom:8px">Reservation received!</h2>
+   <p id="bkRef" style="font-family:monospace;font-size:1.05rem;margin-bottom:14px"></p>
+   <p class="lead" style="margin-bottom:14px">Your booking request is saved. Tap below to confirm instantly on WhatsApp — or call <a href="tel:+256775193137">0775 193137</a>.</p>
+   <a id="bkWa" class="btn" href="#">Confirm on WhatsApp</a>
+  </div></div>
+ </div>
+</section>
+<footer>
+ <div class="wrap">
+  <div class="fgrid">
+   <div>
+    <h3>Relie Motel</h3>
+    <p style="margin-bottom:8px;color:#ddd;font-size:.78rem;letter-spacing:.08em">THE LEADING MOTEL IN FORT PORTAL · OPEN TO ALL TRAVELLERS</p>
+    Malibo Road, Bazaar<br>Fort Portal City, Uganda<br>
+    Plus code M72C+PHQ<br>
+    <a href="https://maps.google.com/?q=0.6518277,30.2714893">View on Google Maps</a>
+   </div>
+   <div>
+    <h3>Reservations</h3>
+    <a href="tel:+256778472498">+256778472498</a><br>
+    <a href="tel:+256775193137">+256 775 193137</a><br>
+    <a href="tel:+256704193137">+256 704 193137</a><br>
+    <a href="https://wa.me/256775193137">WhatsApp 0775 193137</a><br>
+    <a href="https://wa.me/256704193137">WhatsApp 0704 193137</a><br>
+    Front desk 24/7
+   </div>
+   <div>
+    <h3>Explore</h3>
+    <a href="stay.html">Accommodations</a><br>
+    <a href="dine.html">Restaurant &amp; Bar</a><br>
+    <a href="groups.html">Conference &amp; Events</a><br>
+    <a href="book.html">Book a Room Online</a><br>
+    <a href="packages.html">Packages &amp; Offers</a><br>
+    <a href="book.html">Book a Room Online</a>
+   </div>
+   <div>
+    <h3>Stay Connected</h3>
+    <a href="contact.html">Contact + FAQ</a><br>
+    <a href="gallery.html">Gallery</a><br>
+    <a href="explore.html">Explore Fort Portal</a><br>
+    <a href="grounds.html">The Grounds</a>
+   </div>
+  </div>
+  <div class="fl">© 2026 Relie Motel, Fort Portal · <a href="https://wa.me/256775193137">Book direct on WhatsApp</a></div>
+ </div>
+</footer>
+<script>
+(function(){
+ var API='https://solene-aed9a259.base44.app/functions/createRelieBooking';
+ var inD=document.getElementById('bkIn'),outD=document.getElementById('bkOut'),roomS=document.getElementById('bkRoom'),
+     tot=document.getElementById('bkTotal'),go=document.getElementById('bkGo');
+ function pad(n){return (n<10?'0':'')+n}
+ var t=new Date(Date.now()+86400000),tm=new Date(Date.now()+3*86400000);
+ inD.min=t.getFullYear()+'-'+pad(t.getMonth()+1)+'-'+pad(t.getDate());
+ inD.value=inD.min;
+ outD.min=tm.getFullYear()+'-'+pad(tm.getMonth()+1)+'-'+pad(tm.getDate());
+ outD.value=outD.min;
+ function nights(){
+  var a=new Date(inD.value),b=new Date(outD.value);
+  return Math.round((b-a)/86400000);
+ }
+ function calc(){
+  var n=nights(),p=+roomS.selectedOptions[0].getAttribute('data-price');
+  tot.textContent='USD '+(n>0?n*p:0)+(n>0&&n>=7?' (long-stay discount may apply)':'');
+  document.getElementById('bkErr').style.display='none';
+ }
+ inD.addEventListener('change',function(){outD.min=inD.value;var n=nights();if(n<1){outD.value=inD.value;outD.dispatchEvent(new Event('change'))}calc()});
+ outD.addEventListener('change',calc);roomS.addEventListener('change',calc);
+ // preselect room from ?room= param
+ var rm=/[?&]room=(standard-double|standard-twin|deluxe)/.exec(location.search);
+ if(rm){roomS.selectedIndex={'standard-double':0,'standard-twin':1,'deluxe':2}[rm[1]]}
+ calc();
+ go.addEventListener('click',function(){
+  var err=document.getElementById('bkErr');
+  var name=document.getElementById('bkName').value.trim(),
+      phone=document.getElementById('bkPhone').value.trim(),
+      notes=document.getElementById('bkNotes').value.trim(),
+      guests=document.getElementById('bkGuests').value,
+      n=nights();
+  if(!name||!phone){err.textContent='Please enter your name and phone number.';err.style.display='block';return}
+  if(n<1){err.textContent='Check-out must be after check-in.';err.style.display='block';return}
+  var payload={guest_name:name,guest_phone:phone,room_type:roomS.value,check_in:inD.value,check_out:outD.value,
+               guests:+guests,nights:n,total_usd:n*(+roomS.selectedOptions[0].getAttribute('data-price')),notes:notes};
+  go.disabled=true;go.textContent='Reserving…';
+  var msg='Booking request at Relie Motel\nName: '+name+'\nRoom: '+roomS.value+'\nCheck-in: '+inD.value+'\nCheck-out: '+outD.value+' ('+n+' night'+(n>1?'s':'')+')\nGuests: '+guests+'\nEstimated total: USD '+payload.total_usd+'\nPhone: '+phone+(notes?'\nNotes: '+notes:'');
+  var wa='https://wa.me/256775193137?text='+encodeURIComponent(msg);
+  fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+   .then(function(r){return r.json()})
+   .then(function(d){
+     document.getElementById('bkform').style.display='none';
+     document.getElementById('bkDone').style.display='block';
+     document.getElementById('bkRef').textContent='Reference: RM-'+(d.booking&&d.booking.id?d.booking.id.slice(-6).toUpperCase():'PENDING');
+     document.getElementById('bkWa').href=wa;
+     window.open(wa,'_blank');
+   })
+   .catch(function(){
+     // backend unreachable: never lose the booking — go straight to WhatsApp
+     window.location.href=wa;
+   });
+ });
+})();
+</script>
+</body>
+</html>
