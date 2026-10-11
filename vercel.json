@@ -9,5 +9,15 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/(book|stay|dine|grounds|groups|explore|gallery|contact|packages)/?",
+      "destination": "/$1.html"
+    },
+    {
+      "source": "/rooms/(deluxe|double|twin)/?",
+      "destination": "/rooms/$1.html"
+    }
   ]
 }
