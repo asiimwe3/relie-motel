@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://relie-motel.vercel.app/sitemap.xml
+Sitemap: https://reliemotel.com/sitemap.xml
