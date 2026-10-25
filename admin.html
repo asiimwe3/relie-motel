@@ -64,12 +64,29 @@
 
 <div class="wrap hidden" id="dashBox">
   <div class="tabs">
-    <button id="tab-rooms" class="active" onclick="showTab('rooms')">Rooms &amp; Rates</button>
+    <button id="tab-bookings" class="active" onclick="showTab('bookings')">Bookings <span id="bkNew" class="pill on" style="display:none"></span></button>
+    <button id="tab-rooms" onclick="showTab('rooms')">Rooms &amp; Rates</button>
     <button id="tab-settings" onclick="showTab('settings')">Site Settings</button>
   </div>
   <div class="msg" id="msg"></div>
 
-  <div id="panel-rooms">
+  <div id="panel-bookings">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+        <h2 style="margin:0">Bookings <span id="bkcount" style="color:#888;font-weight:400;font-size:.85rem"></span></h2>
+        <button class="btn small" onclick="refreshBookings()">Refresh</button>
+      </div>
+      <p class="field-note" style="margin-top:6px">Every reservation from the website lands here, even if the guest never taps "Confirm on WhatsApp". New ones are highlighted.</p>
+      <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th>Ref</th><th>Guest</th><th>Room</th><th>Dates</th><th>Guests</th><th>Total</th><th>Status</th><th></th></tr></thead>
+        <tbody id="bbody"></tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="panel-rooms" class="hidden">
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
         <h2 style="margin:0">Rooms <span id="rcount" style="color:#888;font-weight:400;font-size:.85rem"></span></h2>
@@ -151,6 +168,8 @@ const ADMIN_API = 'https://derick-ai-775511bf.base44.app/functions/rmAdmin';
 const SITE_IMAGES = ['relie-room-double.webp','relie-room-bedside.webp','relie-room-deluxe.webp','relie-room-deluxe-2.webp','relie-room-canopy-suite.webp','relie-room-canopy-suite-2.webp','relie-room-suite.webp','relie-room-tray.webp','relie-aerial-courtyard.webp','relie-aerial-courtyard-800.webp','relie-aerial-night.webp','relie-aerial-entrance.webp','relie-aerial-neighborhood.webp','relie-aerial-forecourt.webp','relie-aerial-wide.webp','relie-aerial-facade.webp','relie-entrance-plants.webp','relie-dining-room.webp','relie-dining-corner.webp','relie-restaurant-table.webp','relie-restaurant-table-2.webp','relie-bar-terrace.webp','relie-bar-fridge.webp','relie-bar-shelf.webp','relie-balconies-close.webp','relie-massage.webp','relie-tooro-palace.webp'];
 let PW = sessionStorage.getItem('rm_pw') || '';
 let rooms = [];
+let bookings = [];
+const STATUSES = {new:'New', confirmed:'Confirmed', checked_in:'Checked in', completed:'Completed', cancelled:'Cancelled'};
 
 function msg(text, ok){
   const el = document.getElementById('msg');
@@ -174,10 +193,12 @@ async function login(){
     const d = await call({ action:'login' });
     sessionStorage.setItem('rm_pw', PW);
     rooms = d.rooms || [];
+    bookings = d.bookings || [];
     document.getElementById('loginBox').classList.add('hidden');
     document.getElementById('dashBox').classList.remove('hidden');
     document.getElementById('logoutBtn').style.display = 'inline-block';
     renderRooms();
+    renderBookings();
     const s = d.settings || {};
     document.getElementById('s_wa').value = s.waNumber || '';
     document.getElementById('s_herotitle').value = s.heroTitle || '';
@@ -197,8 +218,10 @@ function logout(){
 }
 
 function showTab(t){
+  document.getElementById('tab-bookings').classList.toggle('active', t==='bookings');
   document.getElementById('tab-rooms').classList.toggle('active', t==='rooms');
   document.getElementById('tab-settings').classList.toggle('active', t==='settings');
+  document.getElementById('panel-bookings').classList.toggle('hidden', t!=='bookings');
   document.getElementById('panel-rooms').classList.toggle('hidden', t!=='rooms');
   document.getElementById('panel-settings').classList.toggle('hidden', t!=='settings');
 }
@@ -310,6 +333,60 @@ async function saveSettings(){
     await call({ action:'saveSettings', settings: s });
     msg('Settings saved — live on the website now.', true);
   } catch(e){ msg('Save failed: ' + e.message, false); }
+}
+
+function renderBookings(){
+  const tb = document.getElementById('bbody');
+  const order = {new:0, confirmed:1, checked_in:2, completed:3, cancelled:4};
+  bookings.sort((a,b)=>(order[a.status]??9)-(order[b.status]??9) || String(b.created_date||'').localeCompare(String(a.created_date||'')));
+  const news = bookings.filter(b=>b.status==='new').length;
+  const nb = document.getElementById('bkNew');
+  nb.style.display = news ? 'inline-block' : 'none';
+  nb.textContent = news + ' new';
+  document.getElementById('bkcount').textContent = '(' + bookings.length + ')';
+  tb.innerHTML = bookings.map((b,i)=>`
+    <tr style="${b.status==='new'?'background:#fff8e6':''}">
+      <td style="font-family:monospace;font-size:.78rem">${esc(b.ref||'RM-')}</td>
+      <td><b>${esc(b.guestName)}</b><br><a href="https://wa.me/${esc(String(b.guestPhone||'').replace(/\D/g,''))}" target="_blank" style="font-size:.75rem">${esc(b.guestPhone)}</a></td>
+      <td>${esc(b.roomType||'')}</td>
+      <td style="font-size:.78rem">${esc(b.checkIn)} &rarr; ${esc(b.checkOut)}<br><span style="color:#888">${b.nights||'?'} night${(b.nights||0)>1?'s':''}</span></td>
+      <td>${b.guests||1}</td>
+      <td>UGX ${Number(b.totalUgx||0).toLocaleString()}</td>
+      <td><select onchange="setStatus(${i},this.value)" style="padding:5px;border-radius:5px;font-size:.78rem;border:1px solid #ccc">
+        ${Object.entries(STATUSES).map(([k,v])=>`<option value="${k}" ${b.status===k?'selected':''}>${v}</option>`).join('')}
+      </select></td>
+      <td><button class="btn small danger" onclick="delBooking(${i})">✕</button></td>
+    </tr>${b.notes?`<tr style="font-size:.75rem;color:#666"><td></td><td colspan="7">Note: ${esc(b.notes)}</td></tr>`:''}`).join('');
+}
+
+async function setStatus(i, status){
+  const b = bookings[i];
+  try {
+    await call({ action:'setBookingStatus', id: b.id, status });
+    b.status = status;
+    renderBookings();
+    msg('Booking ' + (b.ref||'') + ' marked as ' + STATUSES[status] + '.', true);
+  } catch(e){ msg('Failed: ' + e.message, false); }
+}
+
+async function delBooking(i){
+  const b = bookings[i];
+  if (!confirm('Delete booking ' + (b.ref||'') + ' for ' + b.guestName + '?')) return;
+  try {
+    await call({ action:'deleteBooking', id: b.id });
+    bookings.splice(i,1);
+    renderBookings();
+    msg('Booking deleted.', true);
+  } catch(e){ msg('Delete failed: ' + e.message, false); }
+}
+
+async function refreshBookings(){
+  try {
+    const d = await call({ action:'listBookings' });
+    bookings = d.bookings || [];
+    renderBookings();
+    msg('Bookings refreshed.', true);
+  } catch(e){ msg('Refresh failed: ' + e.message, false); }
 }
 
 if (PW) login();

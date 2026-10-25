@@ -333,6 +333,7 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
 
    <label class="bkf" for="bkNotes"><span>Special requests <i>(optional)</i></span>
     <textarea id="bkNotes" rows="3" placeholder="Airport pick-up, late check-in, dietary needs…"></textarea></label>
+   <input id="bkWebsite" type="text" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
    <div class="bktotal">
     <div><small>Estimated total</small><div id="bkNights" class="bknights">2 nights</div></div>
@@ -435,6 +436,10 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
   document.getElementById('bkform').style.display='none';
   document.getElementById('bkDone').style.display='block';
   var ref=Date.now().toString(36).slice(-4).toUpperCase();
+  var hp=document.getElementById('bkWebsite');
+  fetch('https://derick-ai-775511bf.base44.app/functions/rmBooking',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({guestName:name,guestPhone:phone,roomType:roomS.value,checkIn:inD.value,checkOut:outD.value,
+      guests:+guests,nights:n,totalUgx:payload.total_ugx,notes:notes,ref:'RM-'+ref,website:hp?hp.value:''})}).catch(function(){});
   document.getElementById('bkRef').textContent='Reference: RM-'+ref;
   document.getElementById('bkWa').href=wa;
   window.open(wa,'_blank');
