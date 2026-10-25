@@ -8,11 +8,15 @@
 
   function rateText(rate){
     if (!rate) return '';
-    return /^[\d,]/.test(rate) ? 'Rates from UGX ' + rate : 'Rates ' + rate.replace(/^on /i,'');
+    if (/^[\d,]/.test(rate)) return 'Rates from UGX ' + rate;
+    if (/^on request$/i.test(rate.trim())) return 'Rates on request';
+    return rate;
   }
   function rateTextNight(rate){
     if (!rate) return '';
-    return /^[\d,]/.test(rate) ? 'Rates from UGX ' + rate + ' / night' : 'Rates ' + rate + ', call or WhatsApp';
+    if (/^[\d,]/.test(rate)) return 'Rates from UGX ' + rate + ' / night';
+    if (/^on request$/i.test(rate.trim())) return 'Rates on request, call or WhatsApp';
+    return rate;
   }
   function imgSrc(img, prefix){
     if (!img) return '';
