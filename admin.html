@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin Dashboard | Relie Motel</title>
+<style>
+  :root{--dark:#12241d;--gold:#d4af37;--green:#1f5f4a;--red:#e5484d;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:#1a1a1a;background:#f4f5f8;line-height:1.5;}
+  header{background:var(--dark);color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;}
+  header h1{font-size:1.1rem;letter-spacing:.04em;}
+  header .sub{display:block;font-size:.7rem;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;}
+  .btn{display:inline-block;border:0;cursor:pointer;font-weight:700;border-radius:6px;padding:10px 18px;font-size:.9rem;background:var(--gold);color:#111;}
+  .btn:hover{filter:brightness(1.08);}
+  .btn.ghost{background:transparent;border:1px solid #ccc;color:#333;}
+  .btn.small{padding:6px 12px;font-size:.8rem;border-radius:5px;}
+  .btn.danger{background:var(--red);color:#fff;}
+  .wrap{max-width:1000px;margin:0 auto;padding:20px 16px 60px;}
+  .card{background:#fff;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:18px;margin-bottom:20px;}
+  h2{font-size:1.15rem;margin-bottom:14px;}
+  label{display:block;font-size:.8rem;font-weight:700;color:#555;margin:10px 0 4px;text-transform:uppercase;letter-spacing:.04em;}
+  input[type=text],input[type=password],input[type=number],select,textarea{width:100%;padding:10px 12px;border:1px solid #ccc;border-radius:6px;font-size:1rem;font-family:inherit;background:#fff;}
+  textarea{resize:vertical;min-height:56px;}
+  .row{display:flex;gap:12px;flex-wrap:wrap;}
+  .row>div{flex:1;min-width:150px;}
+  table{width:100%;border-collapse:collapse;font-size:.85rem;}
+  th,td{text-align:left;padding:8px 6px;border-bottom:1px solid #eee;vertical-align:middle;}
+  th{font-size:.72rem;text-transform:uppercase;color:#777;letter-spacing:.05em;}
+  td img{width:52px;height:40px;object-fit:cover;border-radius:4px;display:block;}
+  .pill{display:inline-block;font-size:.68rem;font-weight:800;padding:3px 9px;border-radius:99px;}
+  .pill.on{background:#e3f9e9;color:#0a7a33;}
+  .pill.off{background:#fdeaea;color:#b3261e;}
+  #loginBox{max-width:380px;margin:8vh auto;}
+  .msg{padding:10px 14px;border-radius:6px;margin:12px 0;font-size:.9rem;display:none;}
+  .msg.ok{background:#e3f9e9;color:#0a7a33;display:block;}
+  .msg.err{background:#fdeaea;color:#b3261e;display:block;}
+  .hidden{display:none;}
+  .tabs{display:flex;gap:8px;margin-bottom:6px;}
+  .tabs button{flex:1;padding:10px;border:1px solid #ccc;background:#fff;font-weight:700;border-radius:6px;cursor:pointer;font-size:.9rem;}
+  .tabs button.active{background:var(--dark);color:#fff;border-color:var(--dark);}
+  .field-note{font-size:.75rem;color:#888;margin-top:3px;}
+  #formWrap .img-preview{max-width:140px;border-radius:6px;margin-top:6px;}
+  footer{padding:24px;text-align:center;color:#888;font-size:.8rem;}
+</style>
+</head>
+<body>
+<header>
+  <div><span class="sub">Relie Motel</span><h1>Admin Dashboard</h1></div>
+  <button class="btn ghost" id="logoutBtn" style="display:none;color:#fff;border-color:#6a7a72" onclick="logout()">Log out</button>
+</header>
+
+<div class="wrap" id="loginBox">
+  <div class="card">
+    <h2>Sign in to manage the website</h2>
+    <div class="msg err" id="loginMsg"></div>
+    <label>Admin password</label>
+    <input type="password" id="pw" placeholder="Enter password" onkeydown="if(event.key==='Enter')login()">
+    <br><br>
+    <button class="btn" style="width:100%" onclick="login()">Sign in</button>
+  </div>
+</div>
+
+<div class="wrap hidden" id="dashBox">
+  <div class="tabs">
+    <button id="tab-rooms" class="active" onclick="showTab('rooms')">Rooms &amp; Rates</button>
+    <button id="tab-settings" onclick="showTab('settings')">Site Settings</button>
+  </div>
+  <div class="msg" id="msg"></div>
+
+  <div id="panel-rooms">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+        <h2 style="margin:0">Rooms <span id="rcount" style="color:#888;font-weight:400;font-size:.85rem"></span></h2>
+        <button class="btn" onclick="openForm(null)">+ Add room</button>
+      </div>
+      <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th></th><th>Room</th><th>Rate</th><th>Visible</th><th>Actions</th></tr></thead>
+        <tbody id="rbody"></tbody>
+      </table>
+      </div>
+      <p class="field-note">Changes appear on reliemotel.com immediately — room cards, rates and the booking pages.</p>
+    </div>
+
+    <div class="card hidden" id="formWrap">
+      <h2 id="formTitle">Add room</h2>
+      <label>Room name *</label>
+      <input type="text" id="f_name" placeholder="e.g. Deluxe Double Room">
+      <div class="row">
+        <div>
+          <label>Rate (UGX, digits only) or 'On request'</label>
+          <input type="text" id="f_rate" placeholder="e.g. 200,000 or On request">
+        </div>
+        <div>
+          <label>Display order</label>
+          <input type="number" id="f_sort" placeholder="0 = first">
+        </div>
+      </div>
+      <label>Short description (shown on cards)</label>
+      <input type="text" id="f_desc" placeholder="e.g. 1 double bed · private bathroom · Wi-Fi · TV">
+      <label>Detail page slug</label>
+      <select id="f_slug">
+        <option value="">— no detail page (new room) —</option>
+        <option value="double">double (Standard Double)</option>
+        <option value="twin">twin (Standard Twin)</option>
+        <option value="deluxe">deluxe (Deluxe Double)</option>
+        <option value="canopy">canopy (Royal Canopy Suite)</option>
+      </select>
+      <label>Photo</label>
+      <select id="f_imgsel" onchange="if(this.value)document.getElementById('f_imgurl').value=this.value;previewImg()"></select>
+      <div style="height:8px"></div>
+      <input type="text" id="f_imgurl" placeholder="Filename (e.g. relie-room-double.webp) or full image URL" oninput="previewImg()">
+      <img id="f_preview" class="img-preview" alt="">
+      <label style="display:flex;align-items:center;gap:8px;text-transform:none;font-size:.9rem"><input type="checkbox" id="f_published" checked style="width:auto"> Visible on the website</label>
+      <br>
+      <button class="btn" id="f_save" onclick="saveRoom()">Save room</button>
+      <button class="btn ghost" onclick="closeForm()">Cancel</button>
+      <input type="hidden" id="f_id">
+    </div>
+  </div>
+
+  <div id="panel-settings" class="hidden">
+    <div class="card">
+      <h2>Site settings</h2>
+      <label>WhatsApp number (digits only, with country code)</label>
+      <input type="text" id="s_wa" placeholder="256775193137">
+      <p class="field-note">Every "Book on WhatsApp" button on every page uses this number.</p>
+      <label>Homepage hero tagline (small gold line)</label>
+      <input type="text" id="s_herotitle" placeholder="e.g. Fort Portal · Western Uganda">
+      <label>Homepage hero headline</label>
+      <input type="text" id="s_herosub" placeholder="e.g. Curved Balconies Over The Hills">
+      <p class="field-note">These replace the first hero slide's caption on the homepage. Leave empty to keep the current one.</p>
+      <label>Top announcement banner</label>
+      <input type="text" id="s_announcement" placeholder="e.g. New: Kibale chimp trekking package — leave empty to hide">
+      <br><br>
+      <button class="btn" onclick="saveSettings()">Save settings</button>
+    </div>
+    <div class="card">
+      <h2>How the dashboard works</h2>
+      <p style="font-size:.85rem;color:#555">Rooms and settings live in a hosted database and load on the website instantly — no redeploy needed. If the connection is ever down, the website falls back to its built-in content, so it never breaks.</p>
+    </div>
+  </div>
+</div>
+
+<footer>Relie Motel admin · Fort Portal City, Uganda</footer>
+
+<script>
+const ADMIN_API = 'https://derick-ai-775511bf.base44.app/functions/rmAdmin';
+const SITE_IMAGES = ['relie-room-double.webp','relie-room-bedside.webp','relie-room-deluxe.webp','relie-room-deluxe-2.webp','relie-room-canopy-suite.webp','relie-room-canopy-suite-2.webp','relie-room-suite.webp','relie-room-tray.webp','relie-aerial-courtyard.webp','relie-aerial-courtyard-800.webp','relie-aerial-night.webp','relie-aerial-entrance.webp','relie-aerial-neighborhood.webp','relie-aerial-forecourt.webp','relie-aerial-wide.webp','relie-aerial-facade.webp','relie-entrance-plants.webp','relie-dining-room.webp','relie-dining-corner.webp','relie-restaurant-table.webp','relie-restaurant-table-2.webp','relie-bar-terrace.webp','relie-bar-fridge.webp','relie-bar-shelf.webp','relie-balconies-close.webp','relie-massage.webp','relie-tooro-palace.webp'];
+let PW = sessionStorage.getItem('rm_pw') || '';
+let rooms = [];
+
+function msg(text, ok){
+  const el = document.getElementById('msg');
+  el.textContent = text;
+  el.className = 'msg ' + (ok ? 'ok' : 'err');
+  clearTimeout(msg._t);
+  msg._t = setTimeout(()=>{ el.className='msg'; }, 4000);
+}
+
+async function call(payload){
+  const r = await fetch(ADMIN_API, { method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ ...payload, password: PW }) });
+  const d = await r.json();
+  if (d.error) throw new Error(d.error + (d.detail ? ' — ' + d.detail : ''));
+  return d;
+}
+
+async function login(){
+  PW = document.getElementById('pw').value;
+  try {
+    const d = await call({ action:'login' });
+    sessionStorage.setItem('rm_pw', PW);
+    rooms = d.rooms || [];
+    document.getElementById('loginBox').classList.add('hidden');
+    document.getElementById('dashBox').classList.remove('hidden');
+    document.getElementById('logoutBtn').style.display = 'inline-block';
+    renderRooms();
+    const s = d.settings || {};
+    document.getElementById('s_wa').value = s.waNumber || '';
+    document.getElementById('s_herotitle').value = s.heroTitle || '';
+    document.getElementById('s_herosub').value = s.heroSub || '';
+    document.getElementById('s_announcement').value = s.announcement || '';
+  } catch(e){
+    const m = document.getElementById('loginMsg');
+    m.textContent = String(e.message).includes('Wrong password') ? 'Wrong password. Try again.' : 'Login failed: ' + e.message;
+    m.className = 'msg err';
+    PW = '';
+  }
+}
+
+function logout(){
+  sessionStorage.removeItem('rm_pw');
+  location.reload();
+}
+
+function showTab(t){
+  document.getElementById('tab-rooms').classList.toggle('active', t==='rooms');
+  document.getElementById('tab-settings').classList.toggle('active', t==='settings');
+  document.getElementById('panel-rooms').classList.toggle('hidden', t!=='rooms');
+  document.getElementById('panel-settings').classList.toggle('hidden', t!=='settings');
+}
+
+function imgSrc(img){
+  if (!img) return '';
+  return img.startsWith('http') ? img : 'assets/images/' + img;
+}
+
+function renderRooms(){
+  const tb = document.getElementById('rbody');
+  rooms.sort((a,b)=>(a.sort ?? 9999)-(b.sort ?? 9999));
+  tb.innerHTML = rooms.map((r,i)=>`
+    <tr>
+      <td>${r.img ? `<img src="${imgSrc(r.img)}" alt="" onerror="this.style.visibility='hidden'">` : ''}</td>
+      <td><b>${esc(r.name)}</b><br><span style="color:#888;font-size:.75rem">${esc((r.desc||'').slice(0,50))}</span></td>
+      <td>${/^[\d,]/.test(r.rate||'') ? 'UGX '+esc(r.rate) : esc(r.rate||'—')}</td>
+      <td>${r.published ? '<span class="pill on">Yes</span>' : '<span class="pill off">No</span>'}</td>
+      <td>
+        <button class="btn small" onclick='openForm(${JSON.stringify(r)})'>Edit</button>
+        <button class="btn small" onclick="togglePublish(${i})">${r.published?'Hide':'Show'}</button>
+        <button class="btn small danger" onclick="del(${i})">Delete</button>
+      </td>
+    </tr>`).join('');
+  document.getElementById('rcount').textContent = '(' + rooms.length + ')';
+}
+
+function esc(s){ return String(s??'').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+function openForm(r){
+  document.getElementById('formWrap').classList.remove('hidden');
+  document.getElementById('formTitle').textContent = r ? 'Edit room' : 'Add room';
+  document.getElementById('f_id').value = r ? r.id : '';
+  document.getElementById('f_name').value = r ? r.name : '';
+  document.getElementById('f_rate').value = r ? (r.rate||'') : '';
+  document.getElementById('f_desc').value = r ? (r.desc||'') : '';
+  document.getElementById('f_slug').value = r ? (r.slug||'') : '';
+  document.getElementById('f_imgurl').value = r ? (r.img||'') : '';
+  document.getElementById('f_sort').value = r ? (r.sort??9999) : (rooms.length ? (rooms[rooms.length-1].sort+1) : 0);
+  document.getElementById('f_published').checked = r ? !!r.published : true;
+  const sel = document.getElementById('f_imgsel');
+  sel.innerHTML = '<option value="">— choose an existing photo —</option>' + SITE_IMAGES.map(a=>`<option value="${a}">${a}</option>`).join('');
+  previewImg();
+  document.getElementById('formWrap').scrollIntoView({behavior:'smooth'});
+}
+
+function closeForm(){ document.getElementById('formWrap').classList.add('hidden'); }
+
+function previewImg(){
+  const v = document.getElementById('f_imgurl').value.trim();
+  const im = document.getElementById('f_preview');
+  if (v) { im.src = imgSrc(v); im.style.display='block'; } else { im.style.display='none'; }
+}
+
+async function saveRoom(){
+  const name = document.getElementById('f_name').value.trim();
+  if (!name) { msg('Room name is required', false); return; }
+  const r = {
+    id: document.getElementById('f_id').value || null,
+    name: name,
+    rate: document.getElementById('f_rate').value.trim(),
+    desc: document.getElementById('f_desc').value.trim(),
+    slug: document.getElementById('f_slug').value,
+    img: document.getElementById('f_imgurl').value.trim(),
+    sort: document.getElementById('f_sort').value || 9999,
+    published: document.getElementById('f_published').checked,
+  };
+  try {
+    document.getElementById('f_save').disabled = true;
+    const d = await call({ action:'saveRoom', room: r });
+    msg(r.id ? 'Room updated — live on the website now.' : 'Room added — live on the website now.', true);
+    if (r.id) { const i = rooms.findIndex(x=>x.id===r.id); if (i>-1) rooms[i] = { ...rooms[i], ...r }; }
+    else rooms.push({ id: d.id, ...r });
+    renderRooms();
+    closeForm();
+  } catch(e){ msg('Save failed: ' + e.message, false); }
+  document.getElementById('f_save').disabled = false;
+}
+
+async function togglePublish(i){
+  const r = rooms[i];
+  try {
+    await call({ action:'toggleRoom', id: r.id, published: !r.published });
+    r.published = !r.published;
+    renderRooms();
+    msg(r.published ? '"'+r.name+'" is now visible on the website.' : '"'+r.name+'" is now hidden.', true);
+  } catch(e){ msg('Failed: ' + e.message, false); }
+}
+
+async function del(i){
+  const r = rooms[i];
+  if (!confirm('Delete "'+r.name+'" permanently?')) return;
+  try {
+    await call({ action:'deleteRoom', id: r.id });
+    rooms.splice(i,1);
+    renderRooms();
+    msg('Room deleted.', true);
+  } catch(e){ msg('Delete failed: ' + e.message, false); }
+}
+
+async function saveSettings(){
+  const s = {
+    waNumber: document.getElementById('s_wa').value.trim(),
+    heroTitle: document.getElementById('s_herotitle').value.trim(),
+    heroSub: document.getElementById('s_herosub').value.trim(),
+    announcement: document.getElementById('s_announcement').value.trim(),
+  };
+  try {
+    await call({ action:'saveSettings', settings: s });
+    msg('Settings saved — live on the website now.', true);
+  } catch(e){ msg('Save failed: ' + e.message, false); }
+}
+
+if (PW) login();
+</script>
+</body>
+</html>
