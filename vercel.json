@@ -49,6 +49,10 @@
       "destination": "/packages.html"
     },
     {
+      "source": "/rooms/canopy",
+      "destination": "/rooms/canopy.html"
+    },
+    {
       "source": "/rooms/deluxe",
       "destination": "/rooms/deluxe.html"
     },
