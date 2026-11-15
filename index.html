@@ -420,8 +420,8 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
 <section class="sec" id="planner">
  <div class="wrap">
   <div class="tag">Relie AI · Trip Planner</div>
-  <h2>Build Your Fort Portal Trip in Ten Seconds</h2>
-  <p class="lead">Tell Relie AI how long you are staying and what you love. It builds a day-by-day plan with your room, meals and activities, then sends it straight to WhatsApp for confirmation.</p>
+  <h2>Sketch Out Your Fort Portal Stay</h2>
+  <p class="lead">Tell Relie AI how long you are staying and what you love. It builds a day-by-day outline of your stay from what we actually offer and what is close by, ready to send to our team on WhatsApp.</p>
   <div class="rlpl">
    <h3>How many nights?</h3>
    <div class="row days" id="plDays">
@@ -515,13 +515,13 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
    if(ints.has(k)){ints.delete(k);b.classList.remove('on')} else {ints.add(k);b.classList.add('on')}
  });
  var A={
-  chimp:{m:'Early start for Kibale National Park (13 km) — chimpanzee trekking with a ranger guide, back for a late lunch.',a:'Afternoon cooling off in the courtyard; our team packs a picnic if you prefer.'},
+  chimp:{m:'Early start for Kibale National Park (13 km) — chimpanzee trekking with a Uganda Wildlife Authority ranger guide.',a:'A quiet afternoon back at the motel to recover from the early start.'},
   crater:{m:'Crater lakes drive — Lake Kyaninga viewpoint and the Amabere ga Nyina Mwiru caves.',a:'Sunset at a crater rim with a cold drink; the classic Fort Portal photo.'},
   culture:{m:'Tooro Kingdom Palace on Karuzika hill, the Lugard Monument and the central market.',a:'Coffee tasting and craft shopping with a guide who knows the traders.'},
-  golf:{m:'Nine holes at the Fort Portal golf course with crater-lake views.',a:'Clubs stored at reception, cold towel and juice on return.'},
-  family:{m:'Easy morning in the gardens and the courtyard — plenty of space for the children.',a:'Board games in the lounge and an early family dinner.'},
-  food:{e:'Dinner in our restaurant — fresh local and international dishes, bar terrace open late.'},
-  relax:{e:'In-house massage room booked for you, then an early night in a quiet room.'}
+  golf:{m:'Nine holes at the Fort Portal golf course, about 2 km from the motel. Ask reception and we will arrange the transport.',a:''},
+  family:{m:'Easy morning in the gardens and the courtyard — plenty of space for the children.',a:'An early family dinner in the restaurant.'},
+  food:{e:'Dinner in the restaurant — local and international dishes — with a drink on the bar terrace.'},
+  relax:{e:'Ask reception to book the in-house massage room, then an early night in a quiet room.'}
  };
  function build(){
    var plan=[], used=new Set();
@@ -547,7 +547,7 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
      html+='<div class="day"><b>'+p.t+'</b><p>'+p.m+(p.e?' '+p.e:'')+'</p></div>';
    });
    var hotel='Room: Standard Double at UGX 70,000 per night (Twin 150,000, Deluxe 200,000).';
-   html+='<p class="note">'+hotel+' Send this plan to our team and we confirm availability on WhatsApp in minutes.</p>';
+   html+='<p class="note">'+hotel+' Send this plan to our team on WhatsApp and we will reply on availability.</p>';
    var msg='Hello Relie Motel! Relie AI built me this plan — '+days+' night'+(days>1?'s':'')+':\n';
    plan.forEach(function(p){msg+='\n'+p.t+': '+p.m+(p.e?' '+p.e:'')});
    msg+='\n\nRoom preference: ';
