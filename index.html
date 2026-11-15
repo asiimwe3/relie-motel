@@ -431,7 +431,7 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
    </div>
    <h3>What are you into?</h3>
    <div class="row" id="plInt">
-     <button class="chip on" data-i="chimp">Chimpanzee trekking</button>
+     <button class="chip" data-i="chimp">Chimpanzee trekking</button>
      <button class="chip" data-i="crater">Crater lakes</button>
      <button class="chip" data-i="culture">Tooro culture</button>
      <button class="chip on" data-i="food">Food &amp; bar</button>
@@ -501,7 +501,7 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
 
 <script>
 (function(){
- var days=1, ints=new Set(['chimp','food']);
+ var days=1, ints=new Set(['food']);
  var dEl=document.getElementById('plDays'), iEl=document.getElementById('plInt');
  if(!dEl) return;
  dEl.addEventListener('click',function(e){
@@ -530,7 +530,9 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
      return null;
    }
    var morningPool=['chimp','crater','culture','golf','family'];
-   var first={t:'Day 1 · Arrival', m:'Check in from 14:30, courtyard welcome drink, unpack and settle in.', e:(ints.has('relax')?A.relax.e:A.food.e)};
+   var firstE;
+   if(ints.has('relax')){ used.add('relax'); firstE=A.relax.e; } else { firstE=A.food.e; }
+   var first={t:'Day 1 · Arrival', m:'Check in from 14:30, courtyard welcome drink, unpack and settle in.', e:firstE};
    plan.push(first);
    for(var d=2; d<=days; d++){
      var m=take(morningPool) || {m:'Slow morning at the motel — breakfast on the terrace and a walk into town.'};
