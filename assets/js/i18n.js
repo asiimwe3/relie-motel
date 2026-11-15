@@ -235,6 +235,27 @@
   function boot() {
     lang = get('relie_lang', '');
     if (!lang) { var nl = (navigator.language || 'en').slice(0, 2).toLowerCase(); lang = LANGS.some(function (x) { return x[0] === nl; }) ? nl : 'en'; }
+    // first visit: infer currency from the visitor's time zone so prices feel local
+    if (!get('relie_cur', '')) {
+      var tz = '';
+      try { tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || ''); } catch (e) {}
+      var TZC = [
+        ['Africa/Kampala', 'UGX'], ['Africa/Nairobi', 'KES'], ['Africa/Dar_es_Salaam', 'TZS'],
+        ['Africa/Kigali', 'RWF'], ['Africa/Lagos', 'USD'], ['Africa/Accra', 'USD'],
+        ['Africa/Johannesburg', 'ZAR'], ['Africa/Cairo', 'USD'], ['Africa/Casablanca', 'EUR'],
+        ['Europe/London', 'GBP'], ['Europe/Dublin', 'EUR'], ['Europe/Paris', 'EUR'], ['Europe/Berlin', 'EUR'],
+        ['Europe/Madrid', 'EUR'], ['Europe/Rome', 'EUR'], ['Europe/Amsterdam', 'EUR'], ['Europe/Lisbon', 'EUR'],
+        ['Asia/Dubai', 'AED'], ['Asia/Kolkata', 'INR'], ['Asia/Calcutta', 'INR'], ['Asia/Shanghai', 'CNY'],
+        ['Asia/Hong_Kong', 'CNY'], ['Asia/Singapore', 'USD'], ['Asia/Tokyo', 'USD'],
+        ['America/Toronto', 'CAD'], ['America/Vancouver', 'CAD'], ['America/New_York', 'USD'],
+        ['America/Chicago', 'USD'], ['America/Denver', 'USD'], ['America/Los_Angeles', 'USD'],
+        ['Australia/Sydney', 'AUD'], ['Australia/Melbourne', 'AUD'], ['Australia/Brisbane', 'AUD'],
+        ['Pacific/Auckland', 'AUD']
+      ];
+      for (var zi = 0; zi < TZC.length; zi++) {
+        if (tz === TZC[zi][0] && rates[TZC[zi][1]]) { cur = TZC[zi][1]; break; }
+      }
+    }
     if (!cur || !rates[cur]) cur = 'USD';
     markPrices();
     buildBar();
