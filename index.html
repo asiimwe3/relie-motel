@@ -532,9 +532,12 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
    var morningPool=['chimp','crater','culture','golf','family'];
    var first={t:'Day 1 · Arrival', m:'Check in from 14:30, courtyard welcome drink, unpack and settle in.', e:(ints.has('relax')?A.relax.e:A.food.e)};
    plan.push(first);
-   for(var d=2; d<=days+1; d++){
+   for(var d=2; d<=days; d++){
      var m=take(morningPool) || {m:'Slow morning at the motel — breakfast on the terrace and a walk into town.'};
-     var e=(ints.has('relax')&&!used.has('relax'))?A.relax.e:A.food.e;
+     var e;
+     if(ints.has('relax') && !used.has('relax')){ used.add('relax'); e=A.relax.e; }
+     else if(d===days && days>1){ e='Dinner at the motel and an early night before you travel.'; }
+     else { e='Dinner at the motel.'; }
      plan.push({t:'Day '+(d), m:m.m, e:e});
    }
    plan.push({t:'Final morning', m:'Breakfast, late check-out on request, and help arranging your next stop.', e:''});
