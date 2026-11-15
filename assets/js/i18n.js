@@ -53,7 +53,7 @@
     if (c === 'UGX') return 'USh ' + Math.round(ugx).toLocaleString(currentLang());
     var v = (ugx / (rates.UGX || FALLBACK.UGX)) * (rates[c] || 1);
     var sym = (CURRENCIES.filter(function (x) { return x[0] === c; })[0] || [0, c])[1];
-    var whole = BIG[c] === 1 || v >= 20;
+    var whole = BIG[c] === 1 || v >= 5;
     var n = whole ? Math.round(v) : Math.round(v * 100) / 100;
     var s = n.toLocaleString(currentLang(), { maximumFractionDigits: whole ? 0 : 2, minimumFractionDigits: 0 });
     return sym + ' ' + s;
