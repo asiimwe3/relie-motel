@@ -288,6 +288,28 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
 @media(max-width:640px){.bkcard{padding:24px 18px;border-radius:14px}.bkgrp,.bkgrp.three{grid-template-columns:1fr;gap:16px}.bktotal b{font-size:1.6rem}.bkhead span{display:none}}
 </style>
 <script>try{var t=localStorage.getItem("relie_theme");if(!t&&matchMedia("(prefers-color-scheme: dark)").matches)t="dark";document.documentElement.setAttribute("data-theme",t||"light")}catch(e){}</script>
+<style>
+.bkwiz{max-width:760px}
+.bksteps{display:flex;gap:6px;margin-bottom:22px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;flex-wrap:wrap}
+.bksteps span{padding:8px 12px;border-radius:999px;background:#f2efe6;color:#7a6f57}
+.bksteps span.on{background:#0b4f3f;color:#fff}
+.bkstep{display:none}
+.bkstep.on{display:block}
+.bkhint{font-size:.8rem;color:#6b5f45;margin:-4px 0 18px}
+.bkrooms{display:grid;gap:12px}
+.bkroom{display:grid;grid-template-columns:104px 1fr;gap:14px;align-items:center;border:1.5px solid #e0dacb;border-radius:8px;padding:10px;cursor:pointer;background:#fcfbf8}
+.bkroom:hover{border-color:#c8bda1}
+.bkroom input{position:absolute;opacity:0;pointer-events:none}
+.bkroom img{width:104px;height:78px;object-fit:cover;border-radius:6px;display:block}
+.bkroom .rn b{display:block;font-size:.95rem;margin-bottom:3px}
+.bkroom .rn small{display:block;font-size:.76rem;color:#6b5f45;line-height:1.5;margin-bottom:4px}
+.bkroom .rn i{font-style:normal;font-weight:700;font-size:.9rem;color:#8a6d0b}
+.bkroom:has(input:checked){border-color:#0b4f3f;background:#f3f8f5;box-shadow:0 0 0 2px rgba(11,79,63,.12)}
+.bkbtn.ghost{background:#f2efe6;color:#3a3428}
+.bkgtrust{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;padding:0;margin:16px 0 26px;font-size:.8rem;color:#4a4436}
+.bkgtrust li b{color:#0b4f3f}
+@media(max-width:520px){.bkroom{grid-template-columns:84px 1fr}.bkroom img{width:84px;height:68px}}
+</style>
 </head>
 <body>
 <h1 class="sronly">Book a Room at Relie Motel Fort Portal — Direct Online Booking</h1>
@@ -306,49 +328,77 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
  <div class="wrap bkwrap">
   <div class="tag">Reserve in under a minute</div>
   <h2>Direct Online Booking</h2>
-  <p class="lead">Book any of our 26 rooms direct with us — no booking fees. Pay at the hotel with cash, MTN MoMo or Airtel Money. Your reservation is confirmed instantly on WhatsApp.</p>
-  <div id="bkform" class="bkcard" style="scroll-margin-top:90px">
-   <div class="bkhead"><b>Your reservation</b><span>No booking fees · Pay at the hotel</span></div>
+  <p class="lead">Book any of our 26 rooms direct — no booking fees, no prepayment. Pay at the hotel with cash, MTN MoMo or Airtel Money. Your request goes straight to our reception, who reply on WhatsApp to confirm availability.</p>
+ <ul class="bkgtrust">
+  <li><b>3.8/5</b> on Google · 288 reviews</li>
+  <li><b>24/7</b> front desk</li>
+  <li><b>Free</b> cancellation 24h before</li>
+  <li><b>No</b> prepayment</li>
+  <li><b>11</b> languages · 13 currencies</li>
+  <li><b>Breakfast</b> included</li>
+ </ul>
+  <div id="bkform" class="bkcard bkwiz" style="scroll-margin-top:90px">
+ <div class="bksteps" id="bkSteps">
+  <span class="on" data-s="1">1 · Your stay</span><span data-s="2">2 · Your room</span><span data-s="3">3 · Your details</span>
+ </div>
 
-   <div class="bkgrp">
-    <label class="bkf" for="bkName"><span>Full name</span><input id="bkName" type="text" placeholder="e.g. John Mugisha" autocomplete="name" required></label>
-    <label class="bkf" for="bkPhone"><span>Phone / WhatsApp</span><input id="bkPhone" type="tel" placeholder="+256 7XX XXX XXX" autocomplete="tel" required></label>
-   </div>
-
-   <div class="bkgrp one">
-    <label class="bkf" for="bkRoom"><span>Room type</span>
-     <select id="bkRoom" aria-label="Room type">
-      <option value="Standard Double" data-price="70000">Standard Double Room · UGX 70,000 / night</option>
-      <option value="Standard Twin" data-price="150000">Standard Twin Room · UGX 150,000 / night</option>
-      <option value="Deluxe Double" data-price="200000">Deluxe Double Room · UGX 200,000 / night</option>
-     </select></label>
-   </div>
-
-   <div class="bkgrp three">
-    <label class="bkf" for="bkIn"><span>Check-in</span><input id="bkIn" type="date" required></label>
-    <label class="bkf" for="bkOut"><span>Check-out</span><input id="bkOut" type="date" required></label>
-    <label class="bkf" for="bkGuests"><span>Guests</span>
-     <select id="bkGuests" aria-label="Guests"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option></select></label>
-   </div>
-
-   <label class="bkf" for="bkNotes"><span>Special requests <i>(optional)</i></span>
-    <textarea id="bkNotes" rows="3" placeholder="Airport pick-up, late check-in, dietary needs…"></textarea></label>
-   <input id="bkWebsite" type="text" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-   <div class="bktotal">
-    <div><small>Estimated total</small><div id="bkNights" class="bknights">2 nights</div></div>
-    <b id="bkTotal">UGX 0</b>
-   </div>
-   <ul class="bkperks"><li>Breakfast included</li><li>Free Wi-Fi &amp; secure parking</li><li>Pay with cash, MTN MoMo or Airtel Money</li></ul>
-
-   <button id="bkGo" class="bkbtn" type="button">Reserve Now</button>
-   <p id="bkErr" class="bkerr" style="display:none"></p>
-   <p class="bkfine">You'll confirm instantly on WhatsApp. Free cancellation up to 24 hours before check-in.</p>
+ <div class="bkstep on" data-step="1">
+  <div class="bkgrp three">
+   <label class="bkf" for="bkIn"><span>Check-in</span><input id="bkIn" type="date" required></label>
+   <label class="bkf" for="bkOut"><span>Check-out</span><input id="bkOut" type="date" required></label>
+   <label class="bkf" for="bkGuests"><span>Guests</span>
+    <select id="bkGuests" aria-label="Guests"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option></select></label>
   </div>
-  <div id="bkDone" style="display:none" class="bkcard"><div style="text-align:center">
+  <p class="bkhint" id="bkGroupNote" style="display:none"></p>
+  <p class="bkhint">Check-in from 14:30 · check-out by 10:00, Fort Portal time (EAT, UTC+3). Free cancellation up to 24 hours before arrival.</p>
+  <button class="bkbtn" type="button" data-next="2">Continue to rooms</button>
+ </div>
+
+ <div class="bkstep" data-step="2">
+  <div class="bkrooms" id="bkRooms">
+   <label class="bkroom"><input type="radio" name="bkroompick" value="Standard Double" checked>
+    <img src="assets/images/relie-room-double.webp" alt="Standard Double Room at Relie Motel" width="700" height="459" loading="lazy">
+    <span class="rn"><b>Standard Double Room</b><small>1 double bed · private bathroom · Wi-Fi · TV · breakfast</small><i class="rl-price" data-ugx="70000">UGX 70,000</i></span></label>
+   <label class="bkroom"><input type="radio" name="bkroompick" value="Standard Twin">
+    <img src="assets/images/relie-room-canopy.webp" alt="Standard Twin Room at Relie Motel" width="900" height="1088" loading="lazy">
+    <span class="rn"><b>Standard Twin Room</b><small>2 single beds · desk · sitting area · breakfast</small><i class="rl-price" data-ugx="150000">UGX 150,000</i></span></label>
+   <label class="bkroom"><input type="radio" name="bkroompick" value="Deluxe Double">
+    <img src="assets/images/relie-room-suite.webp" alt="Deluxe Double Room at Relie Motel" width="900" height="1088" loading="lazy">
+    <span class="rn"><b>Deluxe Double Room</b><small>Upscale double · sitting area · garden-facing · breakfast</small><i class="rl-price" data-ugx="200000">UGX 200,000</i></span></label>
+  </div>
+  <select id="bkRoom" aria-label="Room type" style="position:absolute;left:-9999px" tabindex="-1">
+   <option value="Standard Double" data-price="70000" selected>Standard Double</option>
+   <option value="Standard Twin" data-price="150000">Standard Twin</option>
+   <option value="Deluxe Double" data-price="200000">Deluxe Double</option>
+  </select>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+   <button class="bkbtn ghost" type="button" data-next="1">Back</button>
+   <button class="bkbtn" type="button" data-next="3" style="flex:1">Continue to details</button>
+  </div>
+ </div>
+
+ <div class="bkstep" data-step="3">
+  <div class="bkgrp">
+   <label class="bkf" for="bkName"><span>Full name</span><input id="bkName" type="text" placeholder="e.g. John Mugisha" autocomplete="name" required></label>
+   <label class="bkf" for="bkEmail"><span>Email <i>(optional)</i></span><input id="bkEmail" type="email" placeholder="you@example.com" autocomplete="email"></label>
+  </div>
+  <label class="bkf" for="bkPhone"><span>Phone / WhatsApp <i>(include country code)</i></span><input id="bkPhone" type="tel" placeholder="+256 7XX XXX XXX" autocomplete="tel" required></label>
+  <label class="bkf" for="bkNotes"><span>Special requests <i>(optional)</i></span><textarea id="bkNotes" rows="3" placeholder="Arriving from abroad? Add your flight details for a Kasese airstrip or Entebbe pick-up, plus any late check-in or dietary needs…"></textarea></label>
+  <input id="bkWebsite" type="text" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <div class="bktotal"><div><small>Estimated total</small><div id="bkNights" class="bknights">2 nights</div></div><b id="bkTotal">UGX 0</b></div>
+  <ul class="bkperks"><li>Breakfast included</li><li>No prepayment — pay at the hotel</li><li>Free cancellation up to 24h before arrival</li><li>Cash, MTN MoMo or Airtel Money</li></ul>
+  <p id="bkErr" class="bkerr" style="display:none"></p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+   <button class="bkbtn ghost" type="button" data-next="2">Back</button>
+   <button id="bkGo" class="bkbtn" type="button" style="flex:1">Reserve now</button>
+  </div>
+  <p class="bkfine">Your request goes straight to our reception on WhatsApp. A person replies to confirm availability — nothing is charged online.</p>
+ </div>
+</div>
+<div id="bkDone" style="display:none" class="bkcard"><div style="text-align:center">
    <h2 style="margin-bottom:8px">Reservation received!</h2>
    <p id="bkRef" style="font-family:monospace;font-size:1.05rem;margin-bottom:14px"></p>
-   <p class="lead" style="margin-bottom:14px">Your booking request is ready. Tap below to confirm instantly on WhatsApp — or call <a href="tel:+256775193137">0775 193137</a>.</p>
+   <p class="lead" style="margin-bottom:14px">Your request is ready to send. Tap below and our reception will reply on WhatsApp to confirm availability — or call <a href="tel:+256775193137">0775 193137</a>.</p>
    <a id="bkWa" class="btn" href="#">Confirm on WhatsApp</a>
   </div></div>
  </div>
@@ -414,15 +464,55 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
  }
  inD.addEventListener('change',function(){outD.min=inD.value;var n=nights();if(n<1){outD.value=inD.value;outD.dispatchEvent(new Event('change'))}calc()});
  outD.addEventListener('change',calc);roomS.addEventListener('change',calc);
+ var gSel=document.getElementById('bkGuests'), gNote=document.getElementById('bkGroupNote');
+ function groupNote(){
+  if(!gNote||!gSel) return;
+  var g=+gSel.value;
+  if(g>2){ gNote.style.display='block'; gNote.textContent='Our rooms sleep 2 guests. For '+g+' guests we will quote two rooms or a family arrangement on WhatsApp.'; }
+  else { gNote.style.display='none'; }
+ }
+ if(gSel){ gSel.addEventListener('change',groupNote); groupNote(); }
  // preselect room from ?room= param
  var rm=/[?&]room=(standard-double|standard-twin|deluxe)/.exec(location.search);
  if(rm){roomS.selectedIndex={'standard-double':0,'standard-twin':1,'deluxe':2}[rm[1]]}
  calc();
  document.addEventListener('relie:currency',calc);document.addEventListener('relie:lang',calc);
+
+ // ---- 3-step wizard ----
+ var steps=document.querySelectorAll('.bkstep'), tabs=document.querySelectorAll('#bkSteps span');
+ function goStep(n){
+  steps.forEach(function(s){s.classList.toggle('on', s.dataset.step===String(n))});
+  tabs.forEach(function(t){t.classList.toggle('on', +t.dataset.s<=n)});
+  var card=document.getElementById('bkform');
+  if(card) card.scrollIntoView({behavior:'smooth',block:'start'});
+ }
+ document.querySelectorAll('[data-next]').forEach(function(b){
+  b.addEventListener('click',function(){
+   var n=b.dataset.next;
+   if(n==='2' && nights()<1){
+     var err=document.getElementById('bkErr'); err.textContent='Please choose a check-out date after your check-in.'; err.style.display='block'; return;
+   }
+   goStep(n);
+  });
+ });
+ Array.prototype.forEach.call(document.querySelectorAll('input[name="bkroompick"]'),function(r){
+  r.addEventListener('change',function(){
+   roomS.value=r.value; roomS.dispatchEvent(new Event('change'));
+  });
+ });
+ var rmPre=/[?&]room=(standard-double|standard-twin|deluxe)/.exec(location.search);
+ if(rmPre){
+  var pick={'standard-double':'Standard Double','standard-twin':'Standard Twin','deluxe':'Deluxe Double'}[rmPre[1]];
+  var rp=document.querySelector('input[name="bkroompick"][value="'+pick+'"]');
+  if(rp){ rp.checked=true; roomS.value=pick; roomS.dispatchEvent(new Event('change')); }
+ }
+
  go.addEventListener('click',function(){
   var err=document.getElementById('bkErr');
   var name=document.getElementById('bkName').value.trim(),
       phone=document.getElementById('bkPhone').value.trim(),
+      emailEl=document.getElementById('bkEmail'),
+      email=emailEl?emailEl.value.trim():'',
       notes=document.getElementById('bkNotes').value.trim(),
       guests=document.getElementById('bkGuests').value,
       n=nights();
@@ -430,7 +520,7 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
   if(n<1){err.textContent='Check-out must be after check-in.';err.style.display='block';return}
   var payload={guest_name:name,guest_phone:phone,room_type:roomS.value,check_in:inD.value,check_out:outD.value,
                guests:+guests,nights:n,total_ugx:n*(+roomS.selectedOptions[0].getAttribute('data-price')),notes:notes};
-  var msg='Booking request at Relie Motel\nName: '+name+'\nRoom: '+roomS.value+'\nCheck-in: '+inD.value+'\nCheck-out: '+outD.value+' ('+n+' night'+(n>1?'s':'')+')\nGuests: '+guests+'\nEstimated total: UGX '+payload.total_ugx.toLocaleString()+(window.RelieMoney&&window.RelieMoney.cur!=='UGX'?' (~'+window.RelieMoney.fmt(payload.total_ugx)+')':'')+'\nPhone: '+phone+(notes?'\nNotes: '+notes:'');
+  var msg='Booking request at Relie Motel\nName: '+name+'\nRoom: '+roomS.value+'\nCheck-in: '+inD.value+'\nCheck-out: '+outD.value+' ('+n+' night'+(n>1?'s':'')+')\nGuests: '+guests+'\nEstimated total: UGX '+payload.total_ugx.toLocaleString()+(window.RelieMoney&&window.RelieMoney.cur!=='UGX'?' (~'+window.RelieMoney.fmt(payload.total_ugx)+')':'')+(+guests>2?'\nNote: '+guests+' guests — please quote multiple rooms/':+'')+'\nPhone: '+phone+(email?'\nEmail: '+email:'')+(notes?'\nNotes: '+notes:'');
   var wa='https://wa.me/256775193137?text='+encodeURIComponent(msg);
   // All bookings go DIRECT to WhatsApp — no middleman, no delay, works offline.
   document.getElementById('bkform').style.display='none';
