@@ -178,3 +178,18 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
 .rl-sup-form input{flex:1;height:40px;padding:0 12px;border:1.5px solid var(--field-line);border-radius:10px;background:var(--field);color:var(--text);font:inherit;font-size:.85rem}
 .rl-sup-form button{width:44px;border:0;border-radius:10px;background:var(--accent-2);color:#1a1405;font-size:15px;cursor:pointer}
 @media(max-width:640px){.rl-sup{right:12px;bottom:12px}.rl-sup-box{width:calc(100vw - 24px);height:60vh;bottom:56px;right:0}}
+
+/* ===== Above-the-fold booking path ===== */
+.cap-cta{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.cap-cta .btn{box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.cta-bar{position:fixed;inset-inline:0;bottom:0;z-index:120;display:none;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(10,15,13,.97);border-top:1px solid rgba(212,175,55,.35);backdrop-filter:blur(10px)}
+.cta-bar a{flex:1;text-align:center;padding:14px 8px;border-radius:10px;font-weight:700;font-size:.9rem;text-decoration:none;letter-spacing:.02em}
+.cta-bar .b1{background:var(--gold);color:#111}
+.cta-bar .b2{background:#25d366;color:#08301c}
+@media(max-width:900px){
+ body{padding-bottom:74px}
+ .cta-bar{display:flex}
+ .rl-bar{bottom:86px}
+ .cap-cta{margin-top:14px}
+ .cap-cta .btn{padding:11px 18px;font-size:.85rem}
+}
