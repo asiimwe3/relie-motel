@@ -533,7 +533,7 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
       guests:+guests,nights:n,totalUgx:payload.total_ugx,notes:notes,ref:'RM-'+ref,website:hp?hp.value:''})}).catch(function(){});
   document.getElementById('bkRef').textContent='Reference: RM-'+ref;
   document.getElementById('bkWa').href=wa;
-     try{document.dispatchEvent(new CustomEvent('booking_completed',{detail:{room:payload.room_type,nights:payload.nights,value:payload.total_usd}}))}catch(e){}
+     try{document.dispatchEvent(new CustomEvent('booking_completed',{detail:{room:payload.room_type,nights:payload.nights,value_ugx:payload.total_ugx,currency:'UGX'}}))}catch(e){}
   window.open(wa,'_blank');
  });
 })();

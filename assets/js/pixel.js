@@ -103,7 +103,14 @@
 
   // booking completed (the site dispatches this after a reservation)
   document.addEventListener('booking_completed', function (e) {
-    send('booking_completed', { room: (e.detail && e.detail.room) || '', nights: (e.detail && e.detail.nights) || 0, value_usd: (e.detail && e.detail.value) || 0, currency: 'USD' });
+    var d = e.detail || {};
+    send('booking_completed', {
+      room: d.room || '',
+      nights: d.nights || 0,
+      value_ugx: d.value_ugx || 0,
+      value_usd: d.value || 0,
+      currency: d.currency || 'UGX'
+    });
   });
 
   // scroll depth 50/90
