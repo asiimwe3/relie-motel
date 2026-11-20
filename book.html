@@ -5,7 +5,7 @@
 <meta name="google-site-verification" content="5jKDV0NrHFyJaS7F6mG6IxN0JZlV7xxtDmMJRncwNB0" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book a Room Online | Direct Booking | Relie Motel Fort Portal</title>
+<title>Book a Room Online | Relie Motel (Relief Motel), Fort Portal</title>
 <meta name="description" content="Book your stay at Relie Motel Fort Portal online in under a minute. Choose your room, dates and guests — instant confirmation via WhatsApp. Rooms from UGX 70,000 with breakfast.">
 <style>
 /* Self-hosted fonts: no swap-shift, no third-party */
@@ -401,6 +401,8 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
    <p id="bkRef" style="font-family:monospace;font-size:1.05rem;margin-bottom:14px"></p>
    <p class="lead" style="margin-bottom:14px">Your request is ready to send. Tap below and our reception will reply on WhatsApp to confirm availability — or call <a href="tel:+256775193137">0775 193137</a>.</p>
    <a id="bkWa" class="btn" href="#">Confirm on WhatsApp</a>
+   <p style="margin-top:12px"><button id="bkCopy" class="bkbtn ghost" type="button">Copy my request</button></p>
+   <p id="bkCopyOk" class="bkfine" style="display:none">Copied. Paste it to us on WhatsApp on 0775 193137 or 0704 193137.</p>
   </div></div>
  </div>
 </section>
@@ -521,7 +523,7 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
   if(n<1){err.textContent='Check-out must be after check-in.';err.style.display='block';return}
   var payload={guest_name:name,guest_phone:phone,room_type:roomS.value,check_in:inD.value,check_out:outD.value,
                guests:+guests,nights:n,total_ugx:n*(+roomS.selectedOptions[0].getAttribute('data-price')),notes:notes};
-  var msg='Booking request at Relie Motel\nName: '+name+'\nRoom: '+roomS.value+'\nCheck-in: '+inD.value+'\nCheck-out: '+outD.value+' ('+n+' night'+(n>1?'s':'')+')\nGuests: '+guests+'\nEstimated total: UGX '+payload.total_ugx.toLocaleString()+(window.RelieMoney&&window.RelieMoney.cur!=='UGX'?' (~'+window.RelieMoney.fmt(payload.total_ugx)+')':'')+(+guests>2?'\nNote: '+guests+' guests — please quote multiple rooms/':+'')+'\nPhone: '+phone+(email?'\nEmail: '+email:'')+(notes?'\nNotes: '+notes:'');
+  var msg='Booking request at Relie Motel\nName: '+name+'\nRoom: '+roomS.value+'\nCheck-in: '+inD.value+'\nCheck-out: '+outD.value+' ('+n+' night'+(n>1?'s':'')+')\nGuests: '+guests+'\nEstimated total: '+(window.RelieMoney?window.RelieMoney.fmt(payload.total_ugx):'UGX '+payload.total_ugx.toLocaleString())+(window.RelieMoney?' (~'+window.RelieMoney.fmt(payload.total_ugx)+')':'')+(+guests>2?'\nNote: '+guests+' guests — please quote multiple rooms/':+'')+'\nPhone: '+phone+(email?'\nEmail: '+email:'')+(notes?'\nNotes: '+notes:'');
   var wa='https://wa.me/256775193137?text='+encodeURIComponent(msg);
   // All bookings go DIRECT to WhatsApp — no middleman, no delay, works offline.
   document.getElementById('bkform').style.display='none';
@@ -534,7 +536,24 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
   document.getElementById('bkRef').textContent='Reference: RM-'+ref;
   document.getElementById('bkWa').href=wa;
      try{document.dispatchEvent(new CustomEvent('booking_completed',{detail:{room:payload.room_type,nights:payload.nights,value_ugx:payload.total_ugx,currency:'UGX'}}))}catch(e){}
-  window.open(wa,'_blank');
+  var opened=window.open(wa,'_blank');
+  // A popup blocker must not lose the booking: if the new tab never opened,
+  // take this tab to WhatsApp instead.
+  if(!opened||opened.closed||typeof opened.closed==='undefined'){try{location.href=wa}catch(e){}}
+  window.__relieMsg=msg;
+  var cp=document.getElementById('bkCopy'),cpOk=document.getElementById('bkCopyOk');
+  if(cp){cp.addEventListener('click',function(){
+    var t=window.__relieMsg||msg;
+    function done(){if(cpOk)cpOk.style.display='block'}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fallback()})}
+    else{fallback()}
+    function fallback(){
+      var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.select();
+      try{document.execCommand('copy');done()}catch(e){}
+      document.body.removeChild(ta);
+    }
+  });}
  });
 })();
 </script>
