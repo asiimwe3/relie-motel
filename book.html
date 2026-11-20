@@ -523,7 +523,7 @@ html[dir=rtl] .rl-panel{left:auto;right:0}
   if(n<1){err.textContent='Check-out must be after check-in.';err.style.display='block';return}
   var payload={guest_name:name,guest_phone:phone,room_type:roomS.value,check_in:inD.value,check_out:outD.value,
                guests:+guests,nights:n,total_ugx:n*(+roomS.selectedOptions[0].getAttribute('data-price')),notes:notes};
-  var msg='Booking request at Relie Motel\nName: '+name+'\nRoom: '+roomS.value+'\nCheck-in: '+inD.value+'\nCheck-out: '+outD.value+' ('+n+' night'+(n>1?'s':'')+')\nGuests: '+guests+'\nEstimated total: '+(window.RelieMoney?window.RelieMoney.fmt(payload.total_ugx):'UGX '+payload.total_ugx.toLocaleString())+(window.RelieMoney?' (~'+window.RelieMoney.fmt(payload.total_ugx)+')':'')+(+guests>2?'\nNote: '+guests+' guests — please quote multiple rooms/':+'')+'\nPhone: '+phone+(email?'\nEmail: '+email:'')+(notes?'\nNotes: '+notes:'');
+  var msg='Booking request at Relie Motel\nName: '+name+'\nRoom: '+roomS.value+'\nCheck-in: '+inD.value+'\nCheck-out: '+outD.value+' ('+n+' night'+(n>1?'s':'')+')\nGuests: '+guests+'\nEstimated total: '+(window.RelieMoney?window.RelieMoney.fmt(payload.total_ugx):'UGX '+payload.total_ugx.toLocaleString())+(+guests>2?'\nNote: '+guests+' guests — please quote multiple rooms/':'')+'\nPhone: '+phone+(email?'\nEmail: '+email:'')+(notes?'\nNotes: '+notes:'');
   var wa='https://wa.me/256775193137?text='+encodeURIComponent(msg);
   // All bookings go DIRECT to WhatsApp — no middleman, no delay, works offline.
   document.getElementById('bkform').style.display='none';
